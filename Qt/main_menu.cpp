@@ -3,6 +3,7 @@
 
 #include "App.h"
 
+bool choice;
 
 Main_Menu::Main_Menu(QWidget *parent)
     : QDialog(parent)
@@ -18,7 +19,7 @@ Main_Menu::~Main_Menu()
 
 void Main_Menu::on_player_ai_clicked()
 {
-    choice = 2;
+    choice = true;
     hide();
     game=new Game(this);
     game->show();
@@ -27,7 +28,7 @@ void Main_Menu::on_player_ai_clicked()
 
 void Main_Menu::on_player_player_clicked()
 {
-    choice = 1;
+    choice = false;
     hide();
     game=new Game(this);
     game->show();
@@ -36,6 +37,6 @@ void Main_Menu::on_player_player_clicked()
 
 void Main_Menu::on_game_history_clicked()
 {
-    //display tabl from db
+    //display table from db
 }
 

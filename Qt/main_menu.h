@@ -2,6 +2,7 @@
 #define MAIN_MENU_H
 
 #include <QDialog>
+#include "App.h"
 #include "game.h"
 
 namespace Ui {
@@ -27,6 +28,8 @@ private slots:
 private:
     Ui::Main_Menu *ui;
     Game* game;
+
+
 };
 
 #endif // MAIN_MENU_H

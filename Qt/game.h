@@ -1,41 +1,42 @@
-#ifndef GAME_H
-#define GAME_H
+#include "main_menu.h"
+#include "ui_main_menu.h"
 
-#include <QDialog>
+#include "App.h"
 
-namespace Ui {
-class Game;
+bool choice;
+
+Main_Menu::Main_Menu(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::Main_Menu)
+{
+    ui->setupUi(this);
 }
 
-class Game : public QDialog
+Main_Menu::~Main_Menu()
 {
-    Q_OBJECT
+    delete ui;
+}
 
-public:
-    explicit Game(QWidget *parent = nullptr);
-    ~Game();
+void Main_Menu::on_player_ai_clicked()
+{
+    choice = true;
+    hide();
+    game=new Game(this);
+    game->show();
+}
 
-private slots:
-    void on_pushButton_9_clicked();
 
-    void on_pushButton_1_clicked();
+void Main_Menu::on_player_player_clicked()
+{
+    choice = false;
+    hide();
+    game=new Game(this);
+    game->show();
+}
 
-    void on_pushButton_2_clicked();
 
-    void on_pushButton_3_clicked();
+void Main_Menu::on_game_history_clicked()
+{
+    //display table from db
+}
 
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_6_clicked();
-
-    void on_pushButton_7_clicked();
-
-    void on_pushButton_8_clicked();
-
-private:
-    Ui::Game *ui;
-};
-
-#endif // GAME_H

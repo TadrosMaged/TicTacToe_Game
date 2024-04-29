@@ -2,13 +2,15 @@
 using namespace std;
 
 #include "game.h"
+#include "main_menu.h"
 #include "ui_game.h"
 
 #include "App.h"
 
-bool status[9]={};
 TicTacToe ttt_game;
-int choice;
+int status[9]={0};
+
+
 
 Game::Game(QWidget *parent)
     : QDialog(parent)
@@ -23,193 +25,131 @@ Game::~Game()
 }
 
 
+void Game:: handleMove(int index) {
+
+        if (!status[index]) {
+            // Update game board
+            ttt_game.getCell((index / 3), (index % 3));
+
+            // Update UI
+            QString buttonName = QString("pushButton_%1").arg(index + 1);
+            QPushButton* button = this->findChild<QPushButton*>(buttonName);
+            if (button)
+            {
+                if (choice)
+                {
+                    if (ttt_game.getCurrentPlayer() == PLAYER_X)
+                    {
+                        button->setText("X");
+                        ttt_game.humanMove(ttt_game.board, PLAYER_X);
+                    }
+                    else
+                    {
+                        button->setText("O");
+                        ttt_game.computerMove();
+                    }
+
+
+                    if (ttt_game.isWinner(ttt_game.board, PLAYER_X))
+                    {
+                        std::cout << "You win!" << std::endl;
+                    }
+                    if (ttt_game.isWinner(ttt_game.board, PLAYER_O)) {
+                        std::cout << "Computer wins!" << std::endl;
+                    }
+                    if (!RemPlays)
+                    {
+                        std::cout << "It's a tie!" << std::endl;
+                    }
+
+                }
+                else
+                {
+                    char currentPlayer = ttt_game.getCurrentPlayer();
+                    if (currentPlayer== PLAYER_X)
+                    {
+                        button->setText("X");
+                        ttt_game.humanMove(ttt_game.board, currentPlayer);
+                    }
+                    else
+                    {
+                        button->setText("O");
+                        ttt_game.humanMove(ttt_game.board, currentPlayer);
+                    }
+
+
+
+                    if (ttt_game.isWinner(ttt_game.board, PLAYER_X)) {
+                        std::cout << "Player X wins!" << std::endl;
+                    }
+                    if (ttt_game.isWinner(ttt_game.board, PLAYER_O)) {
+
+                        std::cout << "Player O wins!" << std::endl;
+                    }
+                    if (!RemPlays)
+                    {
+                        std::cout << "It's a tie!" << std::endl;
+                    }
+
+                }
+            }
+
+            // Update game status
+            status[index] = true;
+        }
+}
+
 
 void Game::on_pushButton_1_clicked()
 {
-    if(!status[0])
-    {
-        ttt_game.getCell(1, 3);
-    if(ttt_game.getCurrentPlayer()== PLAYER_X)
-    {
-        ui->pushButton_1->setText("X");
-        ttt_game.currentPlayer=PLAYER_O;
-    }
-    else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-    {
-      ui->pushButton_1->setText("O");
-        ttt_game.currentPlayer=PLAYER_X;
-    }
-
-    status[0]=1;
-    }
-
+    handleMove(0);
 }
 
 
 void Game::on_pushButton_2_clicked()
 {
 
-    if(!status[1])
-    {
-        ttt_game.getCell(2, 3);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_2->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_2->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[1]=1;
-    }
+    handleMove(1);
 }
 
 
 void Game::on_pushButton_3_clicked()
 {
-    if(!status[2])
-    {
-        ttt_game.getCell(3, 3);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_3->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_3->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[2]=1;
-    }
+    handleMove(2);
 }
 
 
 void Game::on_pushButton_4_clicked()
 {
-    if(!status[3])
-    {
-        ttt_game.getCell(1, 2);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_4->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_4->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[3]=1;
-    }
+    handleMove(3);
 }
 
 
 void Game::on_pushButton_5_clicked()
 {
-    if(!status[4])
-    {
-        ttt_game.getCell(2, 2);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_5->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_5->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[4]=1;
-    }
+    handleMove(4);
 }
 
 
 void Game::on_pushButton_6_clicked()
 {
-    if(!status[5])
-    {
-        ttt_game.getCell(2, 3);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_6->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_6->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[5]=1;
-    }
+    handleMove(5);
 }
 
 
 void Game::on_pushButton_7_clicked()
 {
-    if(!status[6])
-    {
-        ttt_game.getCell(1, 1);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_7->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_7->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[6]=1;
-    }
+    handleMove(6);
 }
 
 
 void Game::on_pushButton_8_clicked()
 {
-    if(!status[7])
-    {
-        ttt_game.getCell(1, 2);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_8->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_8->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[7]=1;
-    }
+    handleMove(7);
 }
 
 
 void Game::on_pushButton_9_clicked()
 {
-    if(!status[8])
-    {
-        ttt_game.getCell(1, 3);
-        if(ttt_game.getCurrentPlayer()== PLAYER_X)
-        {
-            ui->pushButton_9->setText("X");
-            ttt_game.currentPlayer=PLAYER_O;
-        }
-        else if(ttt_game.getCurrentPlayer()== PLAYER_O)
-        {
-            ui->pushButton_9->setText("O");
-            ttt_game.currentPlayer=PLAYER_X;
-        }
-
-        status[8]=1;
-    }
+    handleMove(8);
 }
