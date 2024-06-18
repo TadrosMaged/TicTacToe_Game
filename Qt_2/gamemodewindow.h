@@ -16,11 +16,9 @@ public:
     explicit GameModeWindow(QWidget *parent = nullptr);
     ~GameModeWindow();
 
-    // gamemodewindow.h
 private slots:
     void on_singlePlayerButton_clicked();
     void on_multiPlayerButton_clicked();
-
 
 private:
     Ui::GameModeWindow *ui;
