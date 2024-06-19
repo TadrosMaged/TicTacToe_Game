@@ -7,8 +7,7 @@ GameModeWindow::GameModeWindow(QWidget *parent) :
     gameplayWindow(nullptr)  // Initialize pointer to nullptr
 {
     ui->setupUi(this);
-    QPixmap pix("C:/Users/Boutros/Downloads/TicTacBoom.jpg");
-    ui->label->setPixmap(pix.scaled(200,200,Qt::KeepAspectRatio));
+    //ui->label->setPixmap(pix.scaled(200,200,Qt::KeepAspectRatio));
     connect(ui->singlePlayerButton, &QPushButton::clicked, this, &GameModeWindow::on_singlePlayerButton_clicked);
     connect(ui->multiPlayerButton, &QPushButton::clicked, this, &GameModeWindow::on_multiPlayerButton_clicked);
 }

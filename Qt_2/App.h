@@ -39,4 +39,5 @@ public:
 int gameSetting();
 int replayChoice();
 
+extern Move Current_Move;
 #endif /* APP_H_ */
