@@ -1,6 +1,6 @@
 #include "gameplaywindow.h"
+#include "qmessagebox.h"
 #include "ui_gameplaywindow.h"
-#include "customdialog.h"
 
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
@@ -27,9 +27,9 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
             gridLayout->addWidget(buttons[row][col], row, col);
 
             connect(buttons[row][col], &QPushButton::clicked, [=]()
-            {
-                onButtonClick(row, col);
-            });
+                    {
+                        onButtonClick(row, col);
+                    });
         }
     }
 
@@ -59,7 +59,7 @@ void GameplayWindow::onButtonClick(int row, int col)
         // Handle win condition
         QString winnerMessage = "Player " + QString(mark) + " wins!";
         qDebug("Player 1 Wins");
-        // Additional logic for end of game
+        QMessageBox::information(this,"Success","PlayerXwins");
     }
     else if(game.isBoardFull(game.board))
     {
@@ -98,9 +98,9 @@ void GameplayWindow::onButtonClick(int row, int col)
 
 //void GameplayWindow::qDebug(const QString &message)
 //{
-  //  CustomDialog dialog(this);
-    //dialog.setMessage(message);
-    //dialog.exec();
+//  CustomDialog dialog(this);
+//dialog.setMessage(message);
+//dialog.exec();
 //}
 
 

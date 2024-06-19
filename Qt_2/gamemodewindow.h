@@ -1,9 +1,8 @@
 #ifndef GAMEMODEWINDOW_H
 #define GAMEMODEWINDOW_H
-
+#include"gameplaywindow.h"
 #include <QWidget>
-#include "gameplaywindow.h"
-
+class LoginPage;
 namespace Ui {
 class GameModeWindow;
 }
@@ -23,6 +22,7 @@ private slots:
 private:
     Ui::GameModeWindow *ui;
     GameplayWindow *gameplayWindow;  // Single instance of GameplayWindow
+    LoginPage* loginPage;
 };
 
 #endif // GAMEMODEWINDOW_H

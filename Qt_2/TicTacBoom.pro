@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,19 +12,25 @@ SOURCES += \
     App.cpp \
     gamemodewindow.cpp \
     gameplaywindow.cpp \
+    loginpage.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    signupform.cpp
 
 HEADERS += \
     App.h \
     gamemodewindow.h \
     gameplaywindow.h \
-    mainwindow.h
+    loginpage.h \
+    mainwindow.h \
+    signupform.h
 
 FORMS += \
     gamemodewindow.ui \
     gameplaywindow.ui \
-    mainwindow.ui
+    loginpage.ui \
+    mainwindow.ui \
+    signupform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
