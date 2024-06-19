@@ -1,0 +1,10 @@
+debug/App.o
+debug/customdialog.o
+debug/gamemodewindow.o
+debug/gameplaywindow.o
+debug/main.o
+debug/mainwindow.o
+debug/moc_customdialog.o
+debug/moc_gamemodewindow.o
+debug/moc_gameplaywindow.o
+debug/moc_mainwindow.o

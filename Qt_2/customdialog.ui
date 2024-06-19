@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>customdialog</class>
+ <widget class="QWidget" name="customdialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>922</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="outcomeLabel">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>180</y>
+     <width>191</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

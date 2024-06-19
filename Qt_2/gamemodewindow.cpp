@@ -1,6 +1,7 @@
 #include "gamemodewindow.h"
 #include "ui_gamemodewindow.h"
 
+unsigned char GameMode = SINGLEPLAYER_MODE;
 GameModeWindow::GameModeWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameModeWindow),
@@ -25,6 +26,7 @@ void GameModeWindow::on_singlePlayerButton_clicked()
     if (!gameplayWindow) {
         gameplayWindow = new GameplayWindow();
     }
+    GameMode =  SINGLEPLAYER_MODE ;
     gameplayWindow->show();
     this->close();  // Close the GameModeWindow
 }
@@ -34,6 +36,7 @@ void GameModeWindow::on_multiPlayerButton_clicked()
     if (!gameplayWindow) {
         gameplayWindow = new GameplayWindow();
     }
+     GameMode =  MULTIPLAYER_MODE ;
     gameplayWindow->show();
     this->close();  // Close the GameModeWindow
 }

@@ -1,6 +1,6 @@
 #include "gameplaywindow.h"
 #include "ui_gameplaywindow.h"
-
+#include "customdialog.h"
 
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
@@ -27,7 +27,7 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
             gridLayout->addWidget(buttons[row][col], row, col);
 
             connect(buttons[row][col], &QPushButton::clicked, [=]()
-                    {
+            {
                 onButtonClick(row, col);
             });
         }
@@ -44,10 +44,11 @@ void GameplayWindow::onButtonClick(int row, int col)
 
     // Determine which player's turn it is
     unsigned char currentPlayer = game.getCurrentPlayer();
-    QString mark = (currentPlayer == PLAYER_X) ? "X" : "O";
+
+    QChar mark = (currentPlayer == PLAYER_X) ? 'X' : 'O';
 
     // Set the button text to X or O
-    buttons[row][col]->setText(mark);
+    buttons[row][col]->setText(QString(mark));
 
     // Make human move in game logic
     game.humanMove(game.board, currentPlayer, row, col);
@@ -56,42 +57,51 @@ void GameplayWindow::onButtonClick(int row, int col)
     if(game.isWinner(game.board, currentPlayer))
     {
         // Handle win condition
-        qDebug() << "Player " << currentPlayer << " wins!";
-        this->close();
+        QString winnerMessage = "Player " + QString(mark) + " wins!";
+        qDebug("Player 1 Wins");
+        // Additional logic for end of game
     }
     else if(game.isBoardFull(game.board))
     {
         // Handle draw condition
-        qDebug() << "It's a draw!";
-        this->close();
+        qDebug("It's a draw!");
+        // Additional logic for end of game
     }
-    else
+    else if (GameMode == SINGLEPLAYER_MODE)
     {
-        currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
         // Computer's move (if applicable)
         game.computerMove(PLAYER_O);
 
         // Update UI with computer's move
         Move computerMove = game.currentMove;
-        QString computerMark = (currentPlayer == PLAYER_X) ? "X" : "O";
-        buttons[computerMove.row][computerMove.col]->setText(computerMark);
+        unsigned char Player2 = game.getCurrentPlayer();
+        QChar computerMark = (currentPlayer == PLAYER_X) ? '0' : 'X';
+        buttons[computerMove.row][computerMove.col]->setText(QString(computerMark));
 
         // Check for win or draw after computer's move
-        if(game.isWinner(game.board, currentPlayer))
+        if(game.isWinner(game.board, Player2))
         {
             // Handle win condition
-            qDebug() << "Player " << currentPlayer << " wins!";
-            this->close();
+            QString winnerMessage = "Player " + QString(computerMark) + " wins!";
+            qDebug(" player 2 wins ");
+            // Additional logic for end of game
         }
         else if(game.isBoardFull(game.board))
         {
             // Handle draw condition
-            qDebug() << "It's a draw!";
-             this->close();
+            qDebug("It's a draw!");
+            // Additional logic for end of game
         }
-           currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
+
     }
 }
+
+//void GameplayWindow::qDebug(const QString &message)
+//{
+  //  CustomDialog dialog(this);
+    //dialog.setMessage(message);
+    //dialog.exec();
+//}
 
 
 GameplayWindow::~GameplayWindow()

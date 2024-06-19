@@ -6,6 +6,8 @@
 #include <QGridLayout>
 #include "App.h"
 
+#define SINGLEPLAYER_MODE (0U)
+#define MULTIPLAYER_MODE  (1U)
 namespace Ui {
 class GameplayWindow;
 }
@@ -20,6 +22,7 @@ public:
 
 private slots:
 void onButtonClick(int row, int col);
+//void showCustomDialog(const QString &message);
 
 private:
     Ui::GameplayWindow *ui;
@@ -27,4 +30,5 @@ private:
     TicTacToe game;
 };
 
+extern unsigned char GameMode;
 #endif // GAMEPLAYWINDOW_H
