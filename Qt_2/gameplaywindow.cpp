@@ -1,7 +1,7 @@
 #include "gameplaywindow.h"
 #include "qmessagebox.h"
 #include "ui_gameplaywindow.h"
-
+#include"mainwindow.h"
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
     QWidget(parent),
@@ -108,3 +108,11 @@ GameplayWindow::~GameplayWindow()
 {
     delete ui;
 }
+
+void GameplayWindow::on_pushButton_clicked()
+{
+    mainWindow=new MainWindow;
+    mainWindow->show();
+    this->hide();
+}
+

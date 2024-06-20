@@ -24,6 +24,8 @@ private slots:
 void onButtonClick(int row, int col);
 
 
+void on_pushButton_clicked();
+
 private:
     Ui::GameplayWindow *ui;
     QPushButton *buttons[3][3];    // 3x3 Tic Tac Toe board
