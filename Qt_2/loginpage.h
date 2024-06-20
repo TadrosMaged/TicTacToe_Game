@@ -9,6 +9,7 @@
 class SignupForm;
 class GameModeWindow;
 class GameplayWindow;
+class PlayerSelection;
 namespace Ui {
 class LoginPage;
 }
@@ -35,6 +36,7 @@ private:
     SignupForm *signupForm;
     GameModeWindow *GamemodeWindow;
     GameplayWindow *gameplayWindow;
+    PlayerSelection *playerSelection;
 };
 
 #endif // LOGINPAGE_H

@@ -15,6 +15,7 @@ SOURCES += \
     loginpage.cpp \
     main.cpp \
     mainwindow.cpp \
+    playerselection.cpp \
     signupform.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     gameplaywindow.h \
     loginpage.h \
     mainwindow.h \
+    playerselection.h \
     signupform.h
 
 FORMS += \
@@ -30,6 +32,7 @@ FORMS += \
     gameplaywindow.ui \
     loginpage.ui \
     mainwindow.ui \
+    playerselection.ui \
     signupform.ui
 
 # Default rules for deployment.

@@ -1,6 +1,7 @@
 #include "loginpage.h"
 #include "gamemodewindow.h"
 #include"gameplaywindow.h"
+#include "playerselection.h"
 #include "signupform.h"
 #include "ui_loginpage.h"
 int count_signIns=0;
@@ -54,8 +55,8 @@ void LoginPage::on_pushButton_clicked()
             {
                 this->close();
                 count_signIns=0;
-                gameplayWindow=new GameplayWindow;
-                gameplayWindow->show();
+               playerSelection=new PlayerSelection;
+               playerSelection->show();
             }
         }
         if(count<1)
