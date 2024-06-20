@@ -11,10 +11,7 @@ LoginPage::LoginPage(QWidget *parent)
     ui->setupUi(this);
     mydb=QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/TicTacBoom.db");
-    if(mydb.open())
-        ui->label->setText("connected");
-    else
-        ui->label->setText("Not Connected");
+    mydb.open();
 }
 
 LoginPage::~LoginPage()
@@ -46,12 +43,12 @@ void LoginPage::on_pushButton_clicked()
         if(count==1)
         {
             QMessageBox::information(this, "Success", "SignIn successful,Hello "+username);
+            this->close();
             if(count_signIns==0)
             {
                 count_signIns++;
             GamemodeWindow=new GameModeWindow;
             GamemodeWindow->show();
-            this->close();
             }
             else if(count_signIns==1)
             {

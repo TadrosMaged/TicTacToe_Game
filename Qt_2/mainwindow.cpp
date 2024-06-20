@@ -6,8 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QPixmap pix("C:/Users/Boutros/Downloads/TicTacBoom.jpg");
-    ui->label->setPixmap(pix.scaled(200,200,Qt::KeepAspectRatio));
 }
 
 MainWindow::~MainWindow()
