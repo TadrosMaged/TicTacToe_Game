@@ -17,7 +17,7 @@ struct Move {
 };
 
 class TicTacToe {
-    unsigned char currentPlayer = PLAYER_X;
+    unsigned char currentPlayerClass = PLAYER_X;
 
 public:
     Move currentMove;
@@ -29,8 +29,8 @@ public:
     void humanMove(vector<vector<unsigned char>>& board, unsigned char player, int row, int col);
     bool isBoardFull(const vector<vector<unsigned char>>& board) const;
     void computerMove(unsigned char state);
-    unsigned char getCurrentPlayer() const;
-    unsigned char getCell(unsigned char row, unsigned char col) const;
+    void setCurrentPlayer() ;
+    unsigned char getCurrentPlayer() const;    unsigned char getCell(unsigned char row, unsigned char col) const;
     vector<vector<unsigned char>> board;
     int minimax(vector<vector<unsigned char>>& board, int depth, bool isMaximizing, int alpha, int beta, unsigned char state_F);
     void clearBoard(vector<vector<unsigned char>>& board) const;
@@ -39,5 +39,6 @@ public:
 int gameSetting();
 int replayChoice();
 
+extern unsigned char StartPLayer;
 extern Move Current_Move;
 #endif /* APP_H_ */

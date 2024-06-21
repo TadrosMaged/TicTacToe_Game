@@ -1,4 +1,5 @@
 #include "signupform.h"
+#include "qlabel.h"
 #include "ui_signupform.h"
 #include <QMessageBox>
 

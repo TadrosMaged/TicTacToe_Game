@@ -1,7 +1,14 @@
 #include "gameplaywindow.h"
+#include "playerselection.h"
 #include "qmessagebox.h"
 #include "ui_gameplaywindow.h"
 #include"mainwindow.h"
+
+unsigned char StartPLayer;
+unsigned char currentPlayer;
+unsigned char Player1;
+unsigned char Player2;
+unsigned char GameState = GAME_RUNNING;
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
     QWidget(parent),
@@ -34,19 +41,18 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
     }
 
     setLayout(gridLayout);
+    game.setCurrentPlayer();
 }
 
 void GameplayWindow::onButtonClick(int row, int col)
 {
     // Check if the button is already marked
-    if(buttons[row][col]->text() != "")
+    if((buttons[row][col]->text() != "") || (GameState == GAME_ENDED))
         return;
 
-    // Determine which player's turn it is
-    unsigned char currentPlayer = game.getCurrentPlayer();
-
+    currentPlayer = game.getCurrentPlayer();
     QChar mark = (currentPlayer == PLAYER_X) ? 'X' : 'O';
-
+    QString winnerMessage;
     // Set the button text to X or O
     buttons[row][col]->setText(QString(mark));
 
@@ -56,10 +62,16 @@ void GameplayWindow::onButtonClick(int row, int col)
     // Check for win or draw
     if(game.isWinner(game.board, currentPlayer))
     {
+        GameState = GAME_ENDED;
         // Handle win condition
-        QString winnerMessage = "Player " + QString(mark) + " wins!";
-        qDebug("Player 1 Wins");
-        QMessageBox::information(this,"Success","PlayerXwins");
+        if(currentPlayer == Player1)
+        {
+         winnerMessage =  QString(username1) + " wins!";
+        }else
+        {
+         winnerMessage =  QString(username) + " wins!";
+        }
+        QMessageBox::information(this,"Success",winnerMessage);
     }
     else if(game.isBoardFull(game.board))
     {
@@ -74,7 +86,6 @@ void GameplayWindow::onButtonClick(int row, int col)
 
         // Update UI with computer's move
         Move computerMove = game.currentMove;
-        unsigned char Player2 = game.getCurrentPlayer();
         QChar computerMark = (currentPlayer == PLAYER_X) ? '0' : 'X';
         buttons[computerMove.row][computerMove.col]->setText(QString(computerMark));
 
@@ -82,8 +93,10 @@ void GameplayWindow::onButtonClick(int row, int col)
         if(game.isWinner(game.board, Player2))
         {
             // Handle win condition
-            QString winnerMessage = "Player " + QString(computerMark) + " wins!";
-            qDebug(" player 2 wins ");
+            QString winnerMessage = "Computer wins!";
+            QMessageBox::information(this,"Success",winnerMessage);
+            qDebug(" Computer wins ");
+            GameState = GAME_ENDED;
             // Additional logic for end of game
         }
         else if(game.isBoardFull(game.board))
@@ -113,6 +126,24 @@ void GameplayWindow::on_pushButton_clicked()
 {
     mainWindow=new MainWindow;
     mainWindow->show();
+    this->hide();
+}
+
+
+void GameplayWindow::on_pushButton_2_clicked()
+{
+    for(int row = 0; row < 3; ++row)
+    {
+        for(int col = 0; col < 3; ++col)
+        {
+          buttons[row][col]->setText("");
+        }
+    }
+    game.clearBoard(game.board);
+    game.setCurrentPlayer();
+    GameState = GAME_RUNNING;
+    playerSelection=new PlayerSelection;
+    playerSelection->show();
     this->hide();
 }
 

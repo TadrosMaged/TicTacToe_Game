@@ -16,6 +16,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
 void MainWindow::Initialize()
 {
     setGeometry(0,0,1200,800);
