@@ -20,7 +20,10 @@ public:
         this->show();
     }
 private slots:
-    void on_pushButton_clicked();
+    void Start_button_clicked();
+    void Exit_button_clicked();
+    void Initialize();
+    void setupStartAndExit();
 
 private:
     Ui::MainWindow *ui;

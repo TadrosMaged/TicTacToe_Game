@@ -78,15 +78,15 @@ Move TicTacToe::findBestMove(vector<vector<unsigned char>>& board, unsigned char
 void TicTacToe::humanMove(vector<vector<unsigned char>>& board, unsigned char player, int row, int col) {
     board[row][col] = player;
     currentMove = {row, col};
-    currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
+    currentPlayerClass = (currentPlayerClass == PLAYER_X) ? PLAYER_O : PLAYER_X;
     RemPlays--;
 }
 
 void TicTacToe::computerMove(unsigned char state) {
     Move bestMove = findBestMove(board, state);
-    board[bestMove.row][bestMove.col] = currentPlayer;
+    board[bestMove.row][bestMove.col] = currentPlayerClass;
     currentMove = bestMove;
-    currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
+    currentPlayerClass = (currentPlayerClass == PLAYER_X) ? PLAYER_O : PLAYER_X;
     RemPlays--;
 }
 
@@ -99,9 +99,14 @@ bool TicTacToe::isBoardFull(const vector<vector<unsigned char>>& board) const {
     return true;
 }
 
-unsigned char TicTacToe::getCurrentPlayer() const {
-    return currentPlayer;
+void TicTacToe::setCurrentPlayer() {
+   currentPlayerClass = StartPLayer ;
 }
+
+unsigned char TicTacToe::getCurrentPlayer() const{
+    return currentPlayerClass ;
+}
+
 
 unsigned char TicTacToe::getCell(unsigned char row, unsigned char col) const {
     return board[row][col];
@@ -157,6 +162,7 @@ void TicTacToe::clearBoard(vector<vector<unsigned char>>& board) const {
             board[i][j] = EMPTY_CELL;
         }
     }
+    RemPlays = 9;
 }
 
 int gameSetting() {

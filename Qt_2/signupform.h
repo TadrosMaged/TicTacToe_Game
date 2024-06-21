@@ -19,6 +19,7 @@ public:
 
 private slots:
     void signupClicked();
+    void Initialize();
 
 private:
     Ui::SignupForm *ui;

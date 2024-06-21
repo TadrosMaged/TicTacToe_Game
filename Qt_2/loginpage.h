@@ -6,6 +6,8 @@
 #include<QDebug>
 #include<QFileInfo>
 #include<QMessageBox>
+#include<QPixmap>
+#include<QLabel>
 class SignupForm;
 class GameModeWindow;
 class GameplayWindow;
@@ -24,10 +26,9 @@ public:
 
 private slots:
 
-
     void on_pushButton_2_clicked();
-
     void on_pushButton_clicked();
+    void Initialize();
 
 private:
     Ui::LoginPage *ui;
