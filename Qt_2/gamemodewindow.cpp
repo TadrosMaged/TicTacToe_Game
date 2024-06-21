@@ -1,5 +1,6 @@
 #include "gamemodewindow.h"
 #include "loginpage.h"
+#include "playerselection.h"
 #include "ui_gamemodewindow.h"
 unsigned char GameMode = SINGLEPLAYER_MODE;
 GameModeWindow::GameModeWindow(QWidget *parent) :
@@ -40,14 +41,17 @@ void GameModeWindow::Initialize()
     // Optional: Ensure the label is stacked behind other widgets
     backgroundLabel->lower();
 }
+
 void GameModeWindow::on_singlePlayerButton_clicked()
 {
     if (!gameplayWindow) {
         gameplayWindow = new GameplayWindow();
     }
      GameMode =  SINGLEPLAYER_MODE ;
-    gameplayWindow->show();
-    this->close();  // Close the GameModeWindow
+      // Close the GameModeWindow
+    playerSelection=new PlayerSelection;
+    playerSelection->show();
+  this->close();
 }
 
 void GameModeWindow::on_multiPlayerButton_clicked()

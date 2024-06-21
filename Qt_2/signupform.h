@@ -19,9 +19,8 @@ public:
 
 private slots:
     void Initialize();
-
     void on_signupButton_clicked();
-
+    
 private:
     Ui::SignupForm *ui;
     void clearFields();
