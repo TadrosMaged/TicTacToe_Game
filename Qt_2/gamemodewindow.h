@@ -19,6 +19,7 @@ public:
 private slots:
     void on_singlePlayerButton_clicked();
     void on_multiPlayerButton_clicked();
+    void Initialize();
 
 private:
     Ui::GameModeWindow *ui;

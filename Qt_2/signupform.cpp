@@ -8,7 +8,6 @@ SignupForm::SignupForm(QWidget *parent) :
     ui(new Ui::SignupForm)
 {
     ui->setupUi(this);
-    connect(ui->signupButton, &QPushButton::clicked, this, &SignupForm::signupClicked);
     Initialize();
 }
 
@@ -37,7 +36,14 @@ void SignupForm::Initialize()
     // Optional: Ensure the label is stacked behind other widgets
     backgroundLabel->lower();
 }
-void SignupForm::signupClicked()
+void SignupForm::clearFields()
+{
+    ui->usernameEdit->clear();
+    ui->passwordEdit->clear();
+    ui->confirmEdit->clear();
+}
+
+void SignupForm::on_signupButton_clicked()
 {
     QString username = ui->usernameEdit->text().trimmed();
     QString password = ui->passwordEdit->text();
@@ -75,11 +81,4 @@ void SignupForm::signupClicked()
         loginPage->show();
         this->close();
     }
-}
-
-void SignupForm::clearFields()
-{
-    ui->usernameEdit->clear();
-    ui->passwordEdit->clear();
-    ui->confirmEdit->clear();
 }
