@@ -76,7 +76,7 @@ void GameplayWindow::onButtonClick(int row, int col)
     else if(game.isBoardFull(game.board))
     {
         // Handle draw condition
-        qDebug("It's a draw!");
+         QMessageBox::information(this,"Success"," It's a draw ");
         // Additional logic for end of game
     }
     else if (GameMode == SINGLEPLAYER_MODE)
@@ -102,7 +102,7 @@ void GameplayWindow::onButtonClick(int row, int col)
         else if(game.isBoardFull(game.board))
         {
             // Handle draw condition
-            qDebug("It's a draw!");
+            QMessageBox::information(this,"Success"," It's a draw ");
             // Additional logic for end of game
         }
 
