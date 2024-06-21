@@ -2,6 +2,7 @@
 #include "gamemodewindow.h"
 #include"gameplaywindow.h"
 #include "playerselection.h"
+#include "qlabel.h"
 #include "signupform.h"
 #include "ui_loginpage.h"
 
@@ -12,6 +13,7 @@ unsigned char first =0;
 LoginPage::LoginPage(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LoginPage)
+
 {
     ui->setupUi(this);
     Initialize();
@@ -30,6 +32,27 @@ void LoginPage::on_pushButton_2_clicked()
     signupForm=new SignupForm;
     signupForm->show();
     this->close();
+}
+void LoginPage::Initialize()
+{
+    setGeometry(100, 100, 800, 600);
+
+    // Create a QLabel and set it as the central widget
+    QLabel *backgroundLabel = new QLabel(this);
+    backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
+
+    // Set the background image using QPixmap
+    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/01_Login.png");
+    backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
+
+    // Ensure the label resizes with the window
+    backgroundLabel->setScaledContents(true);
+
+    // Make the label transparent so other widgets (if any) can be shown on top
+    backgroundLabel->setAttribute(Qt::WA_TranslucentBackground);
+
+    // Optional: Ensure the label is stacked behind other widgets
+    backgroundLabel->lower();
 }
 
 void LoginPage::Initialize()
