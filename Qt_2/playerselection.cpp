@@ -66,6 +66,8 @@ PlayerSelection::PlayerSelection(QWidget *parent) :
     {
         ui->pushButton_3->hide();
         ui->pushButton_4->hide();
+        ui->label_4->hide();
+        ui->pushButton_6->hide();
     }
 
     // Connect combo box signal to slot for changing style
