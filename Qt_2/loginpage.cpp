@@ -80,6 +80,7 @@ void LoginPage::on_pushButton_clicked()
                 count_signIns++;
             GamemodeWindow=new GameModeWindow;
             GamemodeWindow->show();
+            }
             else if(count_signIns==1)
             {
                 count_signIns=0;
