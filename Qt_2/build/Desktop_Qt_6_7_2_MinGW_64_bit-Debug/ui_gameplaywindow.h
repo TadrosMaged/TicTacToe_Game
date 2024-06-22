@@ -22,6 +22,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
 
     void setupUi(QWidget *GameplayWindow)
     {
@@ -31,19 +32,28 @@ public:
         GameplayWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 107);"));
         pushButton = new QPushButton(GameplayWindow);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(50, 630, 93, 29));
+        pushButton->setGeometry(QRect(470, 410, 271, 51));
         pushButton->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(255, 255, 255);"));
+"background-color: rgba(255, 255, 255,0);\n"
+"border:none"));
         pushButton_2 = new QPushButton(GameplayWindow);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(330, 630, 93, 29));
+        pushButton_2->setGeometry(QRect(470, 250, 271, 51));
         pushButton_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(255, 255, 255);"));
+"background-color: rgba(255, 255, 255,0);\n"
+"border:none"));
         pushButton_3 = new QPushButton(GameplayWindow);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(630, 630, 93, 29));
+        pushButton_3->setGeometry(QRect(470, 490, 271, 51));
         pushButton_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgb(255, 255, 255);"));
+"background-color: rgba(255, 255, 255,0);\n"
+"border:none"));
+        pushButton_4 = new QPushButton(GameplayWindow);
+        pushButton_4->setObjectName("pushButton_4");
+        pushButton_4->setGeometry(QRect(470, 330, 271, 51));
+        pushButton_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+"background-color: rgba(255, 255, 255,0);\n"
+"border:none"));
 
         retranslateUi(GameplayWindow);
 
@@ -53,9 +63,10 @@ public:
     void retranslateUi(QWidget *GameplayWindow)
     {
         GameplayWindow->setWindowTitle(QCoreApplication::translate("GameplayWindow", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("GameplayWindow", "Main Menu", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("GameplayWindow", "New Game", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("GameplayWindow", "History", nullptr));
+        pushButton->setText(QString());
+        pushButton_2->setText(QString());
+        pushButton_3->setText(QString());
+        pushButton_4->setText(QString());
     } // retranslateUi
 
 };

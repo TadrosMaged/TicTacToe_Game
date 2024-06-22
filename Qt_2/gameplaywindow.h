@@ -16,6 +16,7 @@
 
 class MainWindow;
 class PlayerSelection;
+class GameModeWindow;
 namespace Ui {
 class GameplayWindow;
 }
@@ -29,11 +30,11 @@ public:
 
 private slots:
 void onButtonClick(int row, int col);
-
-
+void Initialize();
 void on_pushButton_clicked();
-
 void on_pushButton_2_clicked();
+
+void on_pushButton_4_clicked();
 
 private:
     Ui::GameplayWindow *ui;
@@ -41,10 +42,12 @@ private:
     TicTacToe game;
     MainWindow *mainWindow;
     PlayerSelection *playerSelection;
+    GameModeWindow *gameModeWindow;
 
 };
 extern unsigned char GameMode;
 extern unsigned char StartPLayer;
+extern unsigned char playerstarted;
 extern QString username;
 extern QString username1;
 

@@ -40,7 +40,7 @@ public:
 ""));
         lineEdit_pass = new QLineEdit(LoginPage);
         lineEdit_pass->setObjectName("lineEdit_pass");
-        lineEdit_pass->setGeometry(QRect(480, 350, 251, 41));
+        lineEdit_pass->setGeometry(QRect(480, 340, 251, 51));
         lineEdit_pass->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
 "color: rgba(0, 0, 0);\n"
 "border:none\n"

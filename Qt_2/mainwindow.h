@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "gamemodewindow.h"
+#include<QPushButton>
 class LoginPage;
 namespace Ui {
 class MainWindow;
@@ -24,7 +25,6 @@ private slots:
     void Exit_button_clicked();
     void Initialize();
     void setupStartAndExit();
-
 private:
     Ui::MainWindow *ui;
     GameModeWindow *gameModeWindow;

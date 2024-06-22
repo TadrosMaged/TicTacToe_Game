@@ -19,52 +19,73 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>630</y>
-     <width>93</width>
-     <height>29</height>
+     <x>470</x>
+     <y>410</y>
+     <width>271</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+background-color: rgba(255, 255, 255,0);
+border:none</string>
    </property>
    <property name="text">
-    <string>Main Menu</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>630</y>
-     <width>93</width>
-     <height>29</height>
+     <x>470</x>
+     <y>250</y>
+     <width>271</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+background-color: rgba(255, 255, 255,0);
+border:none</string>
    </property>
    <property name="text">
-    <string>New Game</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>630</y>
-     <width>93</width>
-     <height>29</height>
+     <x>470</x>
+     <y>490</y>
+     <width>271</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+background-color: rgba(255, 255, 255,0);
+border:none</string>
    </property>
    <property name="text">
-    <string>History</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>330</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);
+border:none</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

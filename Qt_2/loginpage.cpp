@@ -2,6 +2,7 @@
 #include "gamemodewindow.h"
 #include"gameplaywindow.h"
 #include "playerselection.h"
+#include "qlabel.h"
 #include "signupform.h"
 #include "ui_loginpage.h"
 
@@ -31,7 +32,6 @@ void LoginPage::on_pushButton_2_clicked()
     signupForm->show();
     this->close();
 }
-
 void LoginPage::Initialize()
 {
     setGeometry(100, 100, 800, 600);
@@ -69,12 +69,12 @@ void LoginPage::on_pushButton_clicked()
         if(count==1)
         {
             QMessageBox::information(this, "Success", "SignIn successful,Hello "+username);
+          this->close();
             if (first ==0)
             {
                 username1 = username;
                     first = 1;
             }
-            this->close();
             if(count_signIns==0)
             {
                 count_signIns++;
@@ -83,7 +83,6 @@ void LoginPage::on_pushButton_clicked()
             }
             else if(count_signIns==1)
             {
-                this->close();
                 count_signIns=0;
                playerSelection=new PlayerSelection;
                playerSelection->show();
