@@ -1,6 +1,5 @@
 #include "gameplaywindow.h"
 #include "playerselection.h"
-#include "qlabel.h"
 #include "qmessagebox.h"
 #include "ui_gameplaywindow.h"
 #include"mainwindow.h"
@@ -16,7 +15,6 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
     ui(new Ui::GameplayWindow)
 {
     ui->setupUi(this);
-    Initialize();
 
     QGridLayout *gridLayout = new QGridLayout(this);
 
@@ -44,34 +42,6 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
 
     setLayout(gridLayout);
     game.setCurrentPlayer();
-}
-
-void GameplayWindow::Initialize()
-{
-    setGeometry(100, 100, 800, 600);
-
-    // Create a QLabel and set it as the central widget
-    QLabel *backgroundLabel = new QLabel(this);
-    backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
-
-    // Set the background image using QPixmap
-    if (GameMode == MULTIPLAYER_MODE)
-    {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
-        backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
-    }else
-    {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
-        backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
-    }
-    // Ensure the label resizes with the window
-    backgroundLabel->setScaledContents(true);
-
-    // Make the label transparent so other widgets (if any) can be shown on top
-    backgroundLabel->setAttribute(Qt::WA_TranslucentBackground);
-
-    // Optional: Ensure the label is stacked behind other widgets
-    backgroundLabel->lower();
 }
 
 void GameplayWindow::onButtonClick(int row, int col)

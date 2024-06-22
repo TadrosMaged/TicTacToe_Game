@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -19,6 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_GameModeWindow
 {
 public:
+    QLabel *label;
     QPushButton *singlePlayerButton;
     QPushButton *multiPlayerButton;
 
@@ -28,18 +30,20 @@ public:
             GameModeWindow->setObjectName("GameModeWindow");
         GameModeWindow->resize(963, 602);
         GameModeWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 79);"));
+        label = new QLabel(GameModeWindow);
+        label->setObjectName("label");
+        label->setGeometry(QRect(360, 0, 211, 211));
+        label->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 66);"));
         singlePlayerButton = new QPushButton(GameModeWindow);
         singlePlayerButton->setObjectName("singlePlayerButton");
-        singlePlayerButton->setGeometry(QRect(50, 160, 271, 381));
+        singlePlayerButton->setGeometry(QRect(350, 290, 241, 29));
         singlePlayerButton->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgba(255, 255, 255,0);\n"
-"border:none"));
+"background-color: rgb(255, 255, 255);"));
         multiPlayerButton = new QPushButton(GameModeWindow);
         multiPlayerButton->setObjectName("multiPlayerButton");
-        multiPlayerButton->setGeometry(QRect(440, 160, 261, 381));
+        multiPlayerButton->setGeometry(QRect(350, 330, 241, 29));
         multiPlayerButton->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
-"background-color: rgba(255, 255, 255,0);\n"
-"border:none"));
+"background-color: rgb(255, 255, 255);"));
 
         retranslateUi(GameModeWindow);
 
@@ -49,8 +53,9 @@ public:
     void retranslateUi(QWidget *GameModeWindow)
     {
         GameModeWindow->setWindowTitle(QCoreApplication::translate("GameModeWindow", "Form", nullptr));
-        singlePlayerButton->setText(QString());
-        multiPlayerButton->setText(QString());
+        label->setText(QString());
+        singlePlayerButton->setText(QCoreApplication::translate("GameModeWindow", "SINGLE PLAYER", nullptr));
+        multiPlayerButton->setText(QCoreApplication::translate("GameModeWindow", "MULTI PLAYER", nullptr));
     } // retranslateUi
 
 };

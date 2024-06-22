@@ -14,69 +14,49 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(0, 0, 104);</string>
   </property>
   <widget class="QLineEdit" name="usernameEdit">
    <property name="geometry">
     <rect>
-     <x>482</x>
-     <y>310</y>
-     <width>211</width>
+     <x>250</x>
+     <y>130</y>
+     <width>113</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 255, 255,0);
-color: rgb(0, 0, 0);
-border:none</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="passwordEdit">
    <property name="geometry">
     <rect>
-     <x>482</x>
-     <y>350</y>
-     <width>231</width>
+     <x>250</x>
+     <y>180</y>
+     <width>113</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 255, 255,0);
-color: rgb(0, 0, 0);
-border:none</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="confirmEdit">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>410</y>
-     <width>221</width>
+     <x>250</x>
+     <y>230</y>
+     <width>113</width>
      <height>26</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 255, 255,0);
-color: rgb(0, 0, 0);
-border:none</string>
    </property>
   </widget>
   <widget class="QPushButton" name="signupButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>460</y>
-     <width>401</width>
+     <x>260</x>
+     <y>280</y>
+     <width>93</width>
      <height>29</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(255, 255, 255,0);
-color: rgb(0, 0, 0);
-border:none</string>
-   </property>
    <property name="text">
-    <string/>
+    <string>PushButton</string>
    </property>
   </widget>
  </widget>

@@ -16,40 +16,54 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 0, 79);</string>
   </property>
-  <widget class="QPushButton" name="singlePlayerButton">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>160</y>
-     <width>271</width>
-     <height>381</height>
+     <x>360</x>
+     <y>0</y>
+     <width>211</width>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
-background-color: rgba(255, 255, 255,0);
-border:none</string>
+    <string notr="true">background-color: rgb(0, 0, 66);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="multiPlayerButton">
+  <widget class="QPushButton" name="singlePlayerButton">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>160</y>
-     <width>261</width>
-     <height>381</height>
+     <x>350</x>
+     <y>290</y>
+     <width>241</width>
+     <height>29</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgba(255, 255, 255,0);
-border:none</string>
+background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>SINGLE PLAYER</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="multiPlayerButton">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>330</y>
+     <width>241</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>MULTI PLAYER</string>
    </property>
   </widget>
  </widget>
