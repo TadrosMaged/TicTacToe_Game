@@ -1,4 +1,6 @@
 release/App.o
+release/choosedifficulty.o
+release/gamehistory.o
 release/gamemodewindow.o
 release/gameplaywindow.o
 release/loginpage.o
@@ -6,6 +8,8 @@ release/main.o
 release/mainwindow.o
 release/playerselection.o
 release/signupform.o
+release/moc_choosedifficulty.o
+release/moc_gamehistory.o
 release/moc_gamemodewindow.o
 release/moc_gameplaywindow.o
 release/moc_loginpage.o

@@ -30,19 +30,31 @@ public:
         if (SignupForm->objectName().isEmpty())
             SignupForm->setObjectName("SignupForm");
         SignupForm->resize(707, 686);
-        SignupForm->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 104);"));
+        SignupForm->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         usernameEdit = new QLineEdit(SignupForm);
         usernameEdit->setObjectName("usernameEdit");
-        usernameEdit->setGeometry(QRect(250, 130, 113, 26));
+        usernameEdit->setGeometry(QRect(482, 310, 211, 26));
+        usernameEdit->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
+"color: rgb(0, 0, 0);\n"
+"border:none"));
         passwordEdit = new QLineEdit(SignupForm);
         passwordEdit->setObjectName("passwordEdit");
-        passwordEdit->setGeometry(QRect(250, 180, 113, 26));
+        passwordEdit->setGeometry(QRect(482, 350, 231, 26));
+        passwordEdit->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
+"color: rgb(0, 0, 0);\n"
+"border:none"));
         confirmEdit = new QLineEdit(SignupForm);
         confirmEdit->setObjectName("confirmEdit");
-        confirmEdit->setGeometry(QRect(250, 230, 113, 26));
+        confirmEdit->setGeometry(QRect(480, 410, 221, 26));
+        confirmEdit->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
+"color: rgb(0, 0, 0);\n"
+"border:none"));
         signupButton = new QPushButton(SignupForm);
         signupButton->setObjectName("signupButton");
-        signupButton->setGeometry(QRect(260, 280, 93, 29));
+        signupButton->setGeometry(QRect(300, 460, 401, 29));
+        signupButton->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
+"color: rgb(0, 0, 0);\n"
+"border:none"));
 
         retranslateUi(SignupForm);
 
@@ -52,7 +64,7 @@ public:
     void retranslateUi(QWidget *SignupForm)
     {
         SignupForm->setWindowTitle(QCoreApplication::translate("SignupForm", "Form", nullptr));
-        signupButton->setText(QCoreApplication::translate("SignupForm", "PushButton", nullptr));
+        signupButton->setText(QString());
     } // retranslateUi
 
 };

@@ -61,7 +61,7 @@ public:
         label_4->setGeometry(QRect(100, 360, 601, 20));
         label_3 = new QLabel(PlayerSelection);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(90, 140, 591, 47));
+        label_3->setGeometry(QRect(90, 150, 591, 47));
         label_3->setLayoutDirection(Qt::LeftToRight);
         pushButton_3 = new QPushButton(PlayerSelection);
         pushButton_3->setObjectName("pushButton_3");

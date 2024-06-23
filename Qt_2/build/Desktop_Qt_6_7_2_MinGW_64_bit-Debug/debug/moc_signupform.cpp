@@ -37,9 +37,9 @@ namespace {
 struct qt_meta_stringdata_CLASSSignupFormENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSSignupFormENDCLASS = QtMocHelpers::stringData(
     "SignupForm",
-    "signupClicked",
+    "Initialize",
     "",
-    "Initialize"
+    "on_signupButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -79,9 +79,9 @@ Q_CONSTINIT const QMetaObject SignupForm::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSSignupFormENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<SignupForm, std::true_type>,
-        // method 'signupClicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'Initialize'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_signupButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -93,8 +93,8 @@ void SignupForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<SignupForm *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->signupClicked(); break;
-        case 1: _t->Initialize(); break;
+        case 0: _t->Initialize(); break;
+        case 1: _t->on_signupButton_clicked(); break;
         default: ;
         }
     }

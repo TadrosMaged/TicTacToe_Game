@@ -29,7 +29,7 @@ public:
         if (GameplayWindow->objectName().isEmpty())
             GameplayWindow->setObjectName("GameplayWindow");
         GameplayWindow->resize(767, 682);
-        GameplayWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 107);"));
+        GameplayWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         pushButton = new QPushButton(GameplayWindow);
         pushButton->setObjectName("pushButton");
         pushButton->setGeometry(QRect(470, 410, 271, 51));
