@@ -20,6 +20,7 @@ class PlayerSelection;
 class chooseDifficulty;
 class GameModeWindow;
 class gameHistory;
+
 namespace Ui {
 class GameplayWindow;
 }
@@ -38,8 +39,9 @@ void on_pushButton_clicked();
 void on_pushButton_2_clicked();
 
 void on_pushButton_4_clicked();
-
 void on_pushButton_3_clicked();
+
+void ClearBoard();
 void setHistory();
 
 private:

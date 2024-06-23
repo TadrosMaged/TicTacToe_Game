@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>734</width>
+    <width>878</width>
     <height>726</height>
    </rect>
   </property>
@@ -16,27 +16,37 @@
   <widget class="QPushButton" name="easyButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>250</y>
-     <width>93</width>
-     <height>29</height>
+     <x>62</x>
+     <y>160</y>
+     <width>271</width>
+     <height>371</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);
+border:none</string>
+   </property>
    <property name="text">
-    <string>EASY</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="hardButton">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>250</y>
-     <width>93</width>
-     <height>29</height>
+     <x>460</x>
+     <y>160</y>
+     <width>291</width>
+     <height>371</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);
+border:none</string>
+   </property>
    <property name="text">
-    <string>HARD</string>
+    <string/>
    </property>
   </widget>
  </widget>

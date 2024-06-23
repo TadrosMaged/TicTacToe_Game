@@ -1,4 +1,8 @@
 #include "gamehistory.h"
+#include "choosedifficulty.h"
+#include "gameplaywindow.h"
+#include "mainwindow.h"
+#include "playerselection.h"
 #include "qlabel.h"
 #include "ui_gamehistory.h"
 gameHistory::gameHistory(QWidget *parent)
@@ -19,8 +23,8 @@ gameHistory::gameHistory(QWidget *parent)
                 buttons_history2[index][row][col] = new QPushButton("", this);
                 buttons_history2[index][row][col]->setFixedSize(50, 50);  // Set a fixed size for buttons
                 buttons_history2[index][row][col]->setStyleSheet("background-color: rgba(255, 255, 255,0);");  // Set button colors
-                text_buttons=buttons_history[index][row][col]->text();
-                buttons_history2[index][row][col]->setText(QString(text_buttons));
+
+                buttons_history2[index][row][col]->setText(buttons_history1[index][row][col]);
                 QFont font = buttons_history2[index][row][col]->font();
                 font.setPointSize(30);  // Adjust the font size as needed
                 buttons_history2[index][row][col]->setFont(font);
@@ -46,7 +50,7 @@ void gameHistory::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/Game History.png");
+    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window
@@ -58,5 +62,29 @@ void gameHistory::Initialize()
     // Optional: Ensure the label is stacked behind other widgets
     backgroundLabel->lower();
 
+}
+
+
+void gameHistory::on_pushButton_clicked()
+{
+    if(GameMode==SINGLEPLAYER_MODE)
+    {
+        choosedifficulty=new chooseDifficulty;
+        choosedifficulty->show();
+    }
+    else
+    {
+        playerSelection=new PlayerSelection;
+        playerSelection->show();
+    }
+    this->hide();
+}
+
+
+void gameHistory::on_pushButton_2_clicked()
+{
+    mainWindow=new MainWindow;
+    mainWindow->show();
+    this->hide();
 }
 

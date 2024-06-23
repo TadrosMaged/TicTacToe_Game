@@ -13,11 +13,11 @@ class chooseDifficulty : public QWidget
 
 public:
     explicit chooseDifficulty(QWidget *parent = nullptr);
+    void Initialize();
     ~chooseDifficulty();
 
 private slots:
     void on_easyButton_clicked();
-
     void on_hardButton_clicked();
 
 private:

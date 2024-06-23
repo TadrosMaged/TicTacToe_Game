@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include<QPushButton>
+class chooseDifficulty;
+class PlayerSelection;
+class MainWindow;
 namespace Ui {
 class gameHistory;
 }
@@ -16,10 +19,18 @@ public:
     ~gameHistory();
     void Initialize();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::gameHistory *ui;
+    chooseDifficulty  *choosedifficulty;
+    PlayerSelection *playerSelection;
      QPushButton *buttons_history2[6][3][3];
+    MainWindow *mainWindow;
 };
-extern QPushButton *buttons_history[6][3][3];
-//extern gameHistory history;
+extern QString buttons_history1[6][3][3];
+
 #endif // GAMEHISTORY_H

@@ -87,7 +87,7 @@ border:none</string>
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>140</y>
+     <y>150</y>
      <width>591</width>
      <height>47</height>
     </rect>
