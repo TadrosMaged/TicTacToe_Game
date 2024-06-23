@@ -6,7 +6,8 @@
 #include <QGridLayout>
 #include<QMessageBox>
 #include "App.h"
-
+#include "gamehistory.h"
+#include<QThread>
 
 #define SINGLEPLAYER_MODE (0U)
 #define MULTIPLAYER_MODE  (1U)
@@ -16,7 +17,9 @@
 
 class MainWindow;
 class PlayerSelection;
+class chooseDifficulty;
 class GameModeWindow;
+class gameHistory;
 namespace Ui {
 class GameplayWindow;
 }
@@ -36,13 +39,17 @@ void on_pushButton_2_clicked();
 
 void on_pushButton_4_clicked();
 
+void on_pushButton_3_clicked();
+void setHistory();
+
 private:
     Ui::GameplayWindow *ui;
-    QPushButton *buttons[3][3];    // 3x3 Tic Tac Toe board
     TicTacToe game;
     MainWindow *mainWindow;
     PlayerSelection *playerSelection;
     GameModeWindow *gameModeWindow;
+    chooseDifficulty *choosedifficulty;
+    gameHistory *gamehistory;
 
 };
 extern unsigned char GameMode;

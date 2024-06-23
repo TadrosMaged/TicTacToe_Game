@@ -1,4 +1,5 @@
 #include "gamemodewindow.h"
+#include "choosedifficulty.h"
 #include "loginpage.h"
 #include "playerselection.h"
 #include "ui_gamemodewindow.h"
@@ -29,7 +30,7 @@ void GameModeWindow::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/ChooseMode.png");
+    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/ChooseMode.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window
@@ -49,8 +50,8 @@ void GameModeWindow::on_singlePlayerButton_clicked()
     }
      GameMode =  SINGLEPLAYER_MODE ;
       // Close the GameModeWindow
-    playerSelection=new PlayerSelection;
-    playerSelection->show();
+   choosedifficulty=new chooseDifficulty;
+    choosedifficulty->show();
   this->close();
 }
 

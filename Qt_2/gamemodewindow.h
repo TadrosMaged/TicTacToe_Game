@@ -3,6 +3,7 @@
 #include"gameplaywindow.h"
 #include <QWidget>
 class LoginPage;
+class chooseDifficulty;
 class PlayerSelection;
 namespace Ui {
 class GameModeWindow;
@@ -26,6 +27,7 @@ private:
     GameplayWindow *gameplayWindow;  // Single instance of GameplayWindow
     LoginPage* loginPage;
     PlayerSelection *playerSelection;
+    chooseDifficulty * choosedifficulty;
 };
 
 #endif // GAMEMODEWINDOW_H

@@ -1,4 +1,6 @@
 #include "gameplaywindow.h"
+#include "choosedifficulty.h"
+#include "gamehistory.h"
 #include "playerselection.h"
 #include "qlabel.h"
 #include "qmessagebox.h"
@@ -14,6 +16,8 @@ unsigned char currentPlayer;
 unsigned char Player1;
 unsigned char Player2;
 unsigned char GameState = GAME_RUNNING;
+QPushButton *buttons[3][3];
+QPushButton *buttons_history[6][3][3];
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
     QWidget(parent),
@@ -21,7 +25,29 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     Initialize();
+    for(int index=0;index<6;++index)
+    {
+        for(int row = 0; row < 3; ++row)
+        {
+            for(int col = 0; col < 3; ++col)
+            {
+                //  QString buttonName = QString("button%1%2").arg(row).arg(col);
+                //  buttons[row][col] = window()->findChild<QPushButton*>(buttonName);
+                buttons_history[index][row][col] = new QPushButton("", this);
+                buttons_history[index][row][col]->setFixedSize(50, 50);  // Set a fixed size for buttons
+                buttons_history[index][row][col]->setStyleSheet("background-color: rgba(255, 255, 255,0);");  // Set button colors
+                buttons_history[index][row][col]->hide();
+                QFont font = buttons_history[index][row][col]->font();
+                font.setPointSize(30);  // Adjust the font size as needed
+                buttons_history[index][row][col]->setFont(font);
+                if(index<3)
+                    buttons_history[index][row][col]->setGeometry(55*(row+1)+68+index*200, 55*(col+1)+115, 50, 30); // (x, y, width, height)
+                else if(index>=3)
+                    buttons_history[index][row][col]->setGeometry(55*(row+1)+68+(index-3)*200, 55*(col+1)+108+200, 50, 30); // (x, y, width, height)
 
+            }
+        }
+    }
    // QGridLayout *gridLayout = new QGridLayout(this);
 
     for(int row = 0; row < 3; ++row)
@@ -60,11 +86,11 @@ void GameplayWindow::Initialize()
     // Set the background image using QPixmap
     if (GameMode == MULTIPLAYER_MODE)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }else
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }
     // Ensure the label resizes with the window
@@ -120,11 +146,13 @@ void GameplayWindow::onButtonClick(int row, int col)
          winnerMessage =  QString(username) + " wins!";
         }
         QMessageBox::information(this,"Success",winnerMessage);
+        setHistory();
     }
     else if(game.isBoardFull(game.board))
     {
         // Handle draw condition
          QMessageBox::information(this,"Success"," It's a draw ");
+       setHistory();
         // Additional logic for end of game
     }
     else if (GameMode == SINGLEPLAYER_MODE)
@@ -143,6 +171,7 @@ void GameplayWindow::onButtonClick(int row, int col)
             // Handle win condition
             QString winnerMessage = "Computer wins!";
             QMessageBox::information(this,"Success",winnerMessage);
+            setHistory();
             qDebug(" Computer wins ");
             GameState = GAME_ENDED;
             // Additional logic for end of game
@@ -151,6 +180,7 @@ void GameplayWindow::onButtonClick(int row, int col)
         {
             // Handle draw condition
             QMessageBox::information(this,"Success"," It's a draw ");
+           setHistory();
             // Additional logic for end of game
         }
 
@@ -200,8 +230,16 @@ void GameplayWindow::on_pushButton_2_clicked()
     game.clearBoard(game.board);
     game.setCurrentPlayer();
     GameState = GAME_RUNNING;
-    playerSelection=new PlayerSelection;
-    playerSelection->show();
+    if(GameMode==SINGLEPLAYER_MODE)
+    {
+    choosedifficulty=new chooseDifficulty;
+    choosedifficulty->show();
+    }
+    else
+    {
+        playerSelection=new PlayerSelection;
+        playerSelection->show();
+    }
     this->hide();
 }
 
@@ -223,3 +261,36 @@ void GameplayWindow::on_pushButton_4_clicked()
     this->hide();
 }
 
+
+void GameplayWindow::on_pushButton_3_clicked()
+{
+    if(!gamehistory)
+    {
+    gamehistory=new gameHistory;
+    }
+    gamehistory->show();
+    this->hide();
+}
+void GameplayWindow::setHistory()
+{
+    QString text_buttons;
+    for(int index=5;index>1;index--)
+    {
+        for(int row=0;row<3;row++)
+        {
+            for(int col=0;col<3;col++)
+            {
+                text_buttons=buttons_history[index][row][col]->text();
+                buttons_history[index][row][col]->setText(QString(text_buttons));
+            }
+        }
+        for(int row=0;row<3;row++)
+        {
+            for(int col=0;col<3;col++)
+            {
+                text_buttons=buttons[row][col]->text();
+                buttons_history[0][row][col]->setText(QString(text_buttons));
+            }
+        }
+    }
+}

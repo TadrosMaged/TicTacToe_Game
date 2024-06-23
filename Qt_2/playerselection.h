@@ -1,7 +1,9 @@
 #ifndef PLAYERSELECTION_H
 #define PLAYERSELECTION_H
 
-
+#define EASY  0
+#define MEDIUM 1
+#define HARD 2
 #include <QWidget>
 class GameplayWindow;
 namespace Ui {
@@ -47,5 +49,6 @@ extern QString username,username1;
 extern unsigned char currentPlayer;
 extern unsigned char Player1;
 extern unsigned char Player2;
+extern unsigned char difficulty;
 
 #endif // PLAYERSELECTION_H

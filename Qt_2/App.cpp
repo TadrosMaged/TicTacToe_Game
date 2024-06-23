@@ -1,8 +1,7 @@
 #include "App.h"
-
 Move Current_Move;
 unsigned char RemPlays = 9;
-
+unsigned char difficulty;
 TicTacToe::TicTacToe() {
     board = {
         {EMPTY_CELL, EMPTY_CELL, EMPTY_CELL},
@@ -100,7 +99,7 @@ bool TicTacToe::isBoardFull(const vector<vector<unsigned char>>& board) const {
 }
 
 void TicTacToe::setCurrentPlayer() {
-   currentPlayerClass = StartPLayer ;
+    currentPlayerClass = StartPLayer ;
 }
 
 unsigned char TicTacToe::getCurrentPlayer() const{
@@ -114,46 +113,125 @@ unsigned char TicTacToe::getCell(unsigned char row, unsigned char col) const {
 
 int TicTacToe::minimax(vector<vector<unsigned char>>& board, int depth, bool isMaximizing, int alpha, int beta, unsigned char state_F) {
     unsigned char opponent = (state_F == PLAYER_X) ? PLAYER_O : PLAYER_X;
+    if(difficulty==EASY)
+    {
+        if (isBoardFull(board)) {
+            return 0;
+        }
 
-    if (isBoardFull(board)) {
-        return 0;
-    }
-
-    if (isMaximizing) {
-        int bestScore = INT_MIN;
-        for (int i = 0; i < BOARD_SIZE; ++i) {
-            for (int j = 0; j < BOARD_SIZE; ++j) {
-                if (board[i][j] == EMPTY_CELL) {
-                    board[i][j] = state_F;
-                    int score = minimax(board, depth + 1, false, alpha, beta, state_F);
-                    board[i][j] = EMPTY_CELL;
-                    bestScore = max(bestScore, score);
-                    alpha = max(alpha, score);
-                    if (beta <= alpha) {
-                        return bestScore;
+        if (isMaximizing) {
+            int bestScore = INT_MIN;
+            for (int i = 0; i < BOARD_SIZE; ++i) {
+                for (int j = 0; j < BOARD_SIZE; ++j) {
+                    if (board[i][j] == EMPTY_CELL) {
+                        board[i][j] = state_F;
+                        int score = minimax(board, depth + 1, false, alpha, beta, state_F);
+                        board[i][j] = EMPTY_CELL;
+                        bestScore = max(bestScore, score);
+                        alpha = max(alpha, score);
+                        if (beta <= alpha) {
+                            return bestScore;
+                        }
                     }
                 }
             }
-        }
-        return bestScore;
-    } else {
-        int bestScore = INT_MAX;
-        for (int i = 0; i < BOARD_SIZE; ++i) {
-            for (int j = 0; j < BOARD_SIZE; ++j) {
-                if (board[i][j] == EMPTY_CELL) {
-                    board[i][j] = opponent;
-                    int score = minimax(board, depth + 1, true, alpha, beta, state_F);
-                    board[i][j] = EMPTY_CELL;
-                    bestScore = min(bestScore, score);
-                    beta = min(beta, score);
-                    if (beta <= alpha) {
-                        return bestScore;
+            return bestScore;
+        } else {
+            int bestScore = INT_MAX;
+            for (int i = 0; i < BOARD_SIZE; ++i) {
+                for (int j = 0; j < BOARD_SIZE; ++j) {
+                    if (board[i][j] == EMPTY_CELL) {
+                        board[i][j] = opponent;
+                        int score = minimax(board, depth + 1, true, alpha, beta, state_F);
+                        board[i][j] = EMPTY_CELL;
+                        bestScore = min(bestScore, score);
+                        beta = min(beta, score);
+                        if (beta <= alpha) {
+                            return bestScore;
+                        }
                     }
                 }
             }
+            return bestScore;
         }
-        return bestScore;
     }
+    else if(difficulty==HARD)
+    {
+        int boardVal = evaluateBoard(board, state_F);
+        if (boardVal == 10 || boardVal == -10) {
+            return boardVal;
+        }
+        if (isBoardFull(board)) {
+            return 0;
+        }
+
+        if (isMaximizing) {
+            int bestScore = INT_MIN;
+            for (int i = 0; i < BOARD_SIZE; ++i) {
+                for (int j = 0; j < BOARD_SIZE; ++j) {
+                    if (board[i][j] == EMPTY_CELL) {
+                        board[i][j] = state_F;
+                        int score = minimax(board, depth + 1, false, alpha, beta, state_F);
+                        board[i][j] = EMPTY_CELL;
+                        bestScore = max(bestScore, score);
+                        alpha = max(alpha, score);
+                        if (beta <= alpha) {
+                            return bestScore;
+                        }
+                    }
+                }
+            }
+            return bestScore;
+        } else {
+            int bestScore = INT_MAX;
+            for (int i = 0; i < BOARD_SIZE; ++i) {
+                for (int j = 0; j < BOARD_SIZE; ++j) {
+                    if (board[i][j] == EMPTY_CELL) {
+                        board[i][j] = opponent;
+                        int score = minimax(board, depth + 1, true, alpha, beta, state_F);
+                        board[i][j] = EMPTY_CELL;
+                        bestScore = min(bestScore, score);
+                        beta = min(beta, score);
+                        if (beta <= alpha) {
+                            return bestScore;
+                        }
+                    }
+                }
+            }
+            return bestScore;
+        }
+    }
+}
+int TicTacToe::evaluateBoard(const vector<vector<unsigned char>> &board, unsigned char state_F) {
+    // Evaluate rows, columns, and diagonals for wins
+    // Return +10 if 'state_F' wins, -10 if opponent wins, and 0 for no win
+    unsigned char opponent = (state_F == PLAYER_X) ? PLAYER_O : PLAYER_X;
+
+    for (int row = 0; row < BOARD_SIZE; row++) {
+        if (board[row][0] == board[row][1] && board[row][1] == board[row][2]) {
+            if (board[row][0] == state_F) return 10;
+            else if (board[row][0] == opponent) return -10;
+        }
+    }
+
+    for (int col = 0; col < BOARD_SIZE; col++) {
+        if (board[0][col] == board[1][col] && board[1][col] == board[2][col]) {
+            if (board[0][col] == state_F) return 10;
+            else if (board[0][col] == opponent) return -10;
+        }
+    }
+
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+        if (board[0][0] == state_F) return 10;
+        else if (board[0][0] == opponent) return -10;
+    }
+
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+        if (board[0][2] == state_F) return 10;
+        else if (board[0][2] == opponent) return -10;
+    }
+
+    return 0;
 }
 
 void TicTacToe::clearBoard(vector<vector<unsigned char>>& board) const {

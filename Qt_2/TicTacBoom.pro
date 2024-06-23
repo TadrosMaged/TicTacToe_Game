@@ -10,6 +10,8 @@ CONFIG += c++17
 
 SOURCES += \
     App.cpp \
+    choosedifficulty.cpp \
+    gamehistory.cpp \
     gamemodewindow.cpp \
     gameplaywindow.cpp \
     loginpage.cpp \
@@ -20,6 +22,8 @@ SOURCES += \
 
 HEADERS += \
     App.h \
+    choosedifficulty.h \
+    gamehistory.h \
     gamemodewindow.h \
     gameplaywindow.h \
     loginpage.h \
@@ -28,6 +32,8 @@ HEADERS += \
     signupform.h
 
 FORMS += \
+    choosedifficulty.ui \
+    gamehistory.ui \
     gamemodewindow.ui \
     gameplaywindow.ui \
     loginpage.ui \
