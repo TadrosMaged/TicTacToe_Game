@@ -37,7 +37,7 @@ border:none</string>
      <x>482</x>
      <y>350</y>
      <width>231</width>
-     <height>26</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -52,7 +52,7 @@ border:none</string>
      <x>480</x>
      <y>410</y>
      <width>221</width>
-     <height>26</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">

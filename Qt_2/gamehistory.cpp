@@ -4,7 +4,9 @@
 #include "mainwindow.h"
 #include "playerselection.h"
 #include "qlabel.h"
+#include "qmessagebox.h"
 #include "ui_gamehistory.h"
+
 gameHistory::gameHistory(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::gameHistory)
@@ -12,6 +14,7 @@ gameHistory::gameHistory(QWidget *parent)
     ui->setupUi(this);
     Initialize();
     QString text_buttons;
+
     for(int index=0;index<6;++index)
     {
         for(int row = 0; row < 3; ++row)
@@ -64,7 +67,6 @@ void gameHistory::Initialize()
 
 }
 
-
 void gameHistory::on_pushButton_clicked()
 {
     if(GameMode==SINGLEPLAYER_MODE)
@@ -86,5 +88,149 @@ void gameHistory::on_pushButton_2_clicked()
     mainWindow=new MainWindow;
     mainWindow->show();
     this->hide();
+}
+
+
+void gameHistory::on_pushButton_3_clicked()
+{
+    if (replayindex[0] == 0)
+        return;
+    replayindex[0]--;
+    unsigned char row = replay[1][replayindex[0]] / 3;
+    unsigned char col = replay[1][replayindex[0]] % 3;
+    buttons_history2[0][row][col]->setText(" ");
+
+}
+
+
+void gameHistory::on_pushButton_4_clicked()
+{
+    if (replayindex[0] == numberofplays[0])
+        return;
+
+    unsigned char row = replay[1][replayindex[0]] / 3;
+    unsigned char col = replay[1][replayindex[0]] % 3;
+    buttons_history2[0][row][col]->setText(buttons_history1[0][row][col]);
+    replayindex[0]++;
+
+}
+
+
+void gameHistory::on_pushButton_5_clicked()
+{
+    if (replayindex[1] == 0)
+        return;
+    replayindex[1]--;
+    unsigned char row = replay[2][replayindex[1]] / 3;
+    unsigned char col = replay[2][replayindex[1]] % 3;
+    buttons_history2[1][row][col]->setText(" ");
+}
+
+
+void gameHistory::on_pushButton_7_clicked()
+{
+    if (replayindex[1] == numberofplays[1])
+        return;
+
+    unsigned char row = replay[2][replayindex[1]] / 3;
+    unsigned char col = replay[2][replayindex[1]] % 3;
+    buttons_history2[1][row][col]->setText(buttons_history1[1][row][col]);
+    replayindex[1]++;
+
+}
+
+
+void gameHistory::on_pushButton_8_clicked()
+{
+    if (replayindex[2] == 0)
+        return;
+    replayindex[2]--;
+    unsigned char row = replay[3][replayindex[2]] / 3;
+    unsigned char col = replay[3][replayindex[2]] % 3;
+    buttons_history2[2][row][col]->setText(" ");
+}
+
+
+void gameHistory::on_pushButton_6_clicked()
+{
+    if (replayindex[2] == numberofplays[2])
+        return;
+
+    unsigned char row = replay[3][replayindex[2]] / 3;
+    unsigned char col = replay[3][replayindex[2]] % 3;
+    buttons_history2[2][row][col]->setText(buttons_history1[2][row][col]);
+    replayindex[2]++;
+}
+
+
+
+
+void gameHistory::on_pushButton_11_clicked()
+{
+    if (replayindex[3] == 0)
+        return;
+    replayindex[3]--;
+    unsigned char row = replay[4][replayindex[3]] / 3;
+    unsigned char col = replay[4][replayindex[3]] % 3;
+    buttons_history2[3][row][col]->setText(" ");
+}
+
+
+void gameHistory::on_pushButton_13_clicked()
+{
+    if (replayindex[3] == numberofplays[3])
+        return;
+
+    unsigned char row = replay[4][replayindex[3]] / 3;
+    unsigned char col = replay[4][replayindex[3]] % 3;
+    buttons_history2[3][row][col]->setText(buttons_history1[3][row][col]);
+    replayindex[3]++;
+}
+
+
+void gameHistory::on_pushButton_9_clicked()
+{
+    if (replayindex[4] == 0)
+        return;
+    replayindex[4]--;
+    unsigned char row = replay[5][replayindex[4]] / 3;
+    unsigned char col = replay[5][replayindex[4]] % 3;
+    buttons_history2[4][row][col]->setText(" ");
+}
+
+
+void gameHistory::on_pushButton_10_clicked()
+{
+    if (replayindex[4] == numberofplays[4])
+        return;
+
+    unsigned char row = replay[5][replayindex[4]] / 3;
+    unsigned char col = replay[5][replayindex[4]] % 3;
+    buttons_history2[4][row][col]->setText(buttons_history1[4][row][col]);
+    replayindex[4]++;
+}
+
+
+void gameHistory::on_pushButton_14_clicked()
+{
+    if (replayindex[5] == 0)
+        return;
+    replayindex[5]--;
+    unsigned char row = replay[6][replayindex[5]] / 3;
+    unsigned char col = replay[6][replayindex[5]] % 3;
+    buttons_history2[5][row][col]->setText(" ");
+}
+
+
+void gameHistory::on_pushButton_12_clicked()
+{
+    if (replayindex[5] == numberofplays[5])
+        return;
+
+    unsigned char row = replay[6][replayindex[5]] / 3;
+    unsigned char col = replay[6][replayindex[5]] % 3;
+    buttons_history2[5][row][col]->setText(buttons_history1[5][row][col]);
+    replayindex[5]++;
+
 }
 

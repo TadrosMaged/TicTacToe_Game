@@ -17,8 +17,14 @@ unsigned char currentPlayer;
 unsigned char Player1;
 unsigned char Player2;
 unsigned char GameState = GAME_RUNNING;
+unsigned char replay[7][9] ={{10}};
+unsigned char replayindex[6]={0};
+unsigned char numberofplays[6]={0};
+unsigned char playindex = 0;
 QPushButton *buttons[3][3];
 QString buttons_history1[6][3][3];
+
+
 GameplayWindow::GameplayWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameplayWindow)
@@ -26,6 +32,24 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
     ui->setupUi(this);
     Initialize();
    // QGridLayout *gridLayout = new QGridLayout(this);
+    currentPlayer = game.getCurrentPlayer();
+    if(currentPlayer == Player1)
+    {
+    ui->label->setText(username1 + " Selection:");
+    }
+    else if(currentPlayer == Player2)
+    {
+    ui->label->setText(username + " Selection:");
+    }
+    if (currentPlayer=='O')
+    {
+        ui->label_2->setText( " X ");
+    }
+    else
+    {
+        ui->label_2->setText( " O ");
+    }
+
 
     for(int row = 0; row < 3; ++row)
     {
@@ -109,6 +133,18 @@ void GameplayWindow::onButtonClick(int row, int col)
 
     // Make human move in game logic
     game.humanMove(game.board, currentPlayer, row, col);
+    switch(row)
+    {
+    case 0:
+        replay[0][playindex++] = col;
+        break;
+    case 1:
+        replay[0][playindex++] = col+3;
+        break;
+    case 2:
+        replay[0][playindex++] = col+6;
+        break;
+    }
 
     // Check for win or draw
     if(game.isWinner(game.board, currentPlayer))
@@ -135,13 +171,24 @@ void GameplayWindow::onButtonClick(int row, int col)
     else if (GameMode == SINGLEPLAYER_MODE)
     {
         // Computer's move (if applicable)
-        game.computerMove(PLAYER_O);
+        game.computerMove((currentPlayer == PLAYER_X) ? 'O' : 'X');
 
         // Update UI with computer's move
         Move computerMove = game.currentMove;
         QChar computerMark = (currentPlayer == PLAYER_X) ? 'O' : 'X';
         buttons[computerMove.row][computerMove.col]->setText(QString(computerMark));
-
+        switch(computerMove.row)
+        {
+        case 0:
+            replay[0][playindex++] = computerMove.col;
+            break;
+        case 1:
+            replay[0][playindex++] = computerMove.col+3;
+            break;
+        case 2:
+            replay[0][playindex++] = computerMove.col+6;
+            break;
+        }
         // Check for win or draw after computer's move
         if(game.isWinner(game.board, Player2))
         {
@@ -160,7 +207,23 @@ void GameplayWindow::onButtonClick(int row, int col)
            setHistory();
             // Additional logic for end of game
         }
-
+    }
+    currentPlayer = game.getCurrentPlayer();
+    if(currentPlayer == Player1)
+    {
+        ui->label->setText(username1 + " Selection:");
+    }
+    else if(currentPlayer == Player2)
+    {
+        ui->label->setText(username + " Selection:");
+    }
+    if (mark=='O')
+    {
+        ui->label_2->setText( " X ");
+    }
+    else
+    {
+        ui->label_2->setText( " O ");
     }
 }
 
@@ -233,6 +296,10 @@ void GameplayWindow::on_pushButton_4_clicked()
 void GameplayWindow::on_pushButton_3_clicked()
 {
     GameplayWindow::ClearBoard();
+    for(int j=5;j>=0;j--)
+    {
+        replayindex[j]=numberofplays[j];
+    }
     gamehistory=new gameHistory;
     gamehistory->show();
     this->hide();
@@ -240,6 +307,10 @@ void GameplayWindow::on_pushButton_3_clicked()
 void GameplayWindow::setHistory()
 {
     QString Switch ;
+    unsigned char swap;
+    swap = numberofplays[5];
+    numberofplays[5]=numberofplays[3];
+    numberofplays[3] =swap;
     for(int row=0;row<3;row++)
     {
         for(int col=0;col<3;col++)
@@ -248,6 +319,12 @@ void GameplayWindow::setHistory()
             buttons_history1[3][row][col] = buttons_history1[5][row][col] ;
             buttons_history1[5][row][col] = Switch;
         }
+    }
+    for(int i=0;i<9;i++)
+    {
+        swap = replay[4][i];
+        replay[4][i]=replay[6][i];
+        replay[6][i]=swap;
     }
     for(int index=5;index>0;index--)
     {
@@ -276,6 +353,27 @@ void GameplayWindow::setHistory()
               buttons_history1[5][row][col] = Switch;
            }
        }
+   for(int j=5;j>0;j--)
+   {
+       for(int i=0;i<9;i++)
+       {
+           replay[j][i]= replay[j-1][i];
+       }
+       numberofplays[j]=numberofplays[j-1];
+
+   }
+       for(int i=0;i<9;i++)
+       {
+           swap = replay[4][i];
+           replay[4][i]=replay[6][i];
+           replay[6][i]=swap;
+       }
+       numberofplays[0]=playindex;
+       playindex=0;
+       swap = numberofplays[5];
+       numberofplays[5]=numberofplays[3];
+       numberofplays[3] =swap;
+
 }
 
 void GameplayWindow::ClearBoard()
