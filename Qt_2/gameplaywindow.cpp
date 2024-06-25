@@ -11,7 +11,8 @@
 #include <QFont>
 #include <QList>
 #include <QThread>
-
+#include<QSqlQuery>
+#include<QSqlError>
 unsigned char StartPLayer;
 unsigned char currentPlayer;
 unsigned char Player1;
@@ -23,7 +24,8 @@ unsigned char numberofplays[6]={0};
 unsigned char playindex = 0;
 QPushButton *buttons[3][3];
 QString buttons_history1[6][3][3];
-
+QString gameData;
+int count_times=0;
 
 GameplayWindow::GameplayWindow(QWidget *parent) :
     QWidget(parent),
@@ -87,11 +89,11 @@ void GameplayWindow::Initialize()
     // Set the background image using QPixmap
     if (GameMode == MULTIPLAYER_MODE)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }else
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }
     // Ensure the label resizes with the window
@@ -343,6 +345,18 @@ void GameplayWindow::setHistory()
                 buttons_history1[0][row][col] =buttons[row][col]->text();
             }
         }
+        for (int row = 0; row < 3; ++row) {
+            for (int col = 0; col < 3; ++col) {
+                buttons_history1[0][row][col] = buttons[row][col]->text();
+                gameData.append(buttons_history1[0][row][col]);
+                if (!(row == 2 && col == 2)) {
+                    gameData.append(",");
+                }
+            }
+            if (row < 2) {
+                gameData.append(";");
+            }
+        }
 
        for(int row=0;row<3;row++)
        {
@@ -362,6 +376,13 @@ void GameplayWindow::setHistory()
        numberofplays[j]=numberofplays[j-1];
 
    }
+   QString replayData;
+   for (int i = 0; i < 9; ++i) {
+       replayData.append(QString::number(replay[0][i]));
+       if (i < 8) {
+           replayData.append(",");
+       }
+   }
        for(int i=0;i<9;i++)
        {
            swap = replay[4][i];
@@ -373,7 +394,9 @@ void GameplayWindow::setHistory()
        swap = numberofplays[5];
        numberofplays[5]=numberofplays[3];
        numberofplays[3] =swap;
-
+       storeGameHistory(username, gameData,replayData);
+       gameData=0;
+       replayData=0;
 }
 
 void GameplayWindow::ClearBoard()
@@ -388,5 +411,19 @@ void GameplayWindow::ClearBoard()
     game.clearBoard(game.board);
     game.setCurrentPlayer();
     GameState = GAME_RUNNING;
+}
+void GameplayWindow::storeGameHistory(const QString& username, const QString& gameData, const QString& replayData)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO game_history (username, game_data, replay) VALUES (:username, :game_data, :replay)");
+    query.bindValue(":username", username);
+    query.bindValue(":game_data", gameData);
+    query.bindValue(":replay", replayData);
+
+    if (!query.exec()) {
+        qDebug() << "Error: failed to insert data - " << query.lastError();
+    } else {
+        qDebug() << "Game history stored successfully for username: " << username;
+    }
 }
 

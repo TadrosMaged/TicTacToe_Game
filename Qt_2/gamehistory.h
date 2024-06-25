@@ -47,7 +47,8 @@ private slots:
     void on_pushButton_14_clicked();
 
     void on_pushButton_12_clicked();
-
+    void fetchGameHistory();
+    void displayGameHistory(int index, const QString& gameData);
 private:
     Ui::gameHistory *ui;
     chooseDifficulty  *choosedifficulty;
