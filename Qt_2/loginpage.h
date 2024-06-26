@@ -9,7 +9,7 @@
 #include<QPixmap>
 #include<QLabel>
 class SignupForm;
-class GameModeWindow;
+class userProfile;
 class GameplayWindow;
 class PlayerSelection;
 namespace Ui {
@@ -35,9 +35,11 @@ private:
     LoginPage *loginPage;
     QSqlDatabase mydb;
     SignupForm *signupForm;
-    GameModeWindow *GamemodeWindow;
+    userProfile *userprofile;
     GameplayWindow *gameplayWindow;
     PlayerSelection *playerSelection;
 };
+
+extern unsigned char first;
 
 #endif // LOGINPAGE_H

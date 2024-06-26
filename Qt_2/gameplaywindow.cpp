@@ -1,6 +1,7 @@
 #include "gameplaywindow.h"
 #include "choosedifficulty.h"
 #include "gamehistory.h"
+#include "loginpage.h"
 #include "playerselection.h"
 #include "qlabel.h"
 #include "qmessagebox.h"
@@ -33,25 +34,33 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     Initialize();
+    game.setCurrentPlayer();
    // QGridLayout *gridLayout = new QGridLayout(this);
     currentPlayer = game.getCurrentPlayer();
     if(currentPlayer == Player1)
     {
     ui->label->setText(username1 + " Selection:");
+        if (currentPlayer=='O')
+        {
+            ui->label_2->setText( " O ");
+        }
+        else
+        {
+            ui->label_2->setText( " X ");
+        }
     }
     else if(currentPlayer == Player2)
     {
     ui->label->setText(username + " Selection:");
+        if (currentPlayer=='O')
+        {
+            ui->label_2->setText( " X ");
+        }
+        else
+        {
+            ui->label_2->setText( " O ");
+        }
     }
-    if (currentPlayer=='O')
-    {
-        ui->label_2->setText( " X ");
-    }
-    else
-    {
-        ui->label_2->setText( " O ");
-    }
-
 
     for(int row = 0; row < 3; ++row)
     {
@@ -75,7 +84,7 @@ GameplayWindow::GameplayWindow(QWidget *parent) :
     }
 
    // setLayout(gridLayout);
-    game.setCurrentPlayer();
+
 }
 
 void GameplayWindow::Initialize()
@@ -89,11 +98,11 @@ void GameplayWindow::Initialize()
     // Set the background image using QPixmap
     if (GameMode == MULTIPLAYER_MODE)
     {
-        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }else
     {
-        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }
     // Ensure the label resizes with the window
@@ -219,6 +228,8 @@ void GameplayWindow::onButtonClick(int row, int col)
     {
         ui->label->setText(username + " Selection:");
     }
+    if (GameMode == MULTIPLAYER_MODE )
+    {
     if (mark=='O')
     {
         ui->label_2->setText( " X ");
@@ -226,6 +237,7 @@ void GameplayWindow::onButtonClick(int row, int col)
     else
     {
         ui->label_2->setText( " O ");
+    }
     }
 }
 
@@ -252,6 +264,7 @@ void GameplayWindow::on_pushButton_clicked()
         }
     }
     game.clearBoard(game.board);
+    first = 0;
     game.setCurrentPlayer();
     GameState = GAME_RUNNING;
     mainWindow=new MainWindow;

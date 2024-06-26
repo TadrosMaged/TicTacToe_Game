@@ -58,11 +58,11 @@ void PlayerSelection::Initialize()
     // Set the background image using QPixmap
     if (GameMode == MULTIPLAYER_MODE)
     {
-        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/05_Multiplayer_WhoisX.png");
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/05_Multiplayer_WhoisX.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }else
     {
-        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/07_Singleplayer_WhoisX.png");
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/07_Singleplayer_WhoisX.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }
     // Ensure the label resizes with the window

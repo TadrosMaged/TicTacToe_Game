@@ -18,7 +18,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     playerselection.cpp \
-    signupform.cpp
+    signupform.cpp \
+    statisticswindow.cpp \
+    userprofile.cpp
 
 HEADERS += \
     App.h \
@@ -29,7 +31,9 @@ HEADERS += \
     loginpage.h \
     mainwindow.h \
     playerselection.h \
-    signupform.h
+    signupform.h \
+    statisticswindow.h \
+    userprofile.h
 
 FORMS += \
     choosedifficulty.ui \
@@ -39,7 +43,9 @@ FORMS += \
     loginpage.ui \
     mainwindow.ui \
     playerselection.ui \
-    signupform.ui
+    signupform.ui \
+    statisticswindow.ui \
+    userprofile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

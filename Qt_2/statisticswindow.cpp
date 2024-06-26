@@ -1,21 +1,17 @@
-#include "choosedifficulty.h"
-#include "ui_choosedifficulty.h"
+#include "statisticswindow.h"
+#include "ui_statisticswindow.h"
 #include "qlabel.h"
-chooseDifficulty::chooseDifficulty(QWidget *parent)
+#include "userprofile.h"
+
+statisticsWindow::statisticsWindow(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::chooseDifficulty)
+    , ui(new Ui::statisticsWindow)
 {
     ui->setupUi(this);
     Initialize();
 }
 
-chooseDifficulty::~chooseDifficulty()
-{
-    delete ui;
-}
-
-
-void chooseDifficulty::Initialize()
+void statisticsWindow::Initialize()
 {
     setGeometry(100, 100, 800, 600);
 
@@ -24,7 +20,7 @@ void chooseDifficulty::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/choose_difficulty.png");
+    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/statistics.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window
@@ -37,21 +33,15 @@ void chooseDifficulty::Initialize()
     backgroundLabel->lower();
 
 }
-void chooseDifficulty::on_easyButton_clicked()
+statisticsWindow::~statisticsWindow()
 {
-    difficulty=EASY;
-    playerSelection=new PlayerSelection;
-    playerSelection->show();
-    this->hide();
+    delete ui;
 }
 
-
-void chooseDifficulty::on_hardButton_clicked()
+void statisticsWindow::on_pushButton_clicked()
 {
-    difficulty=HARD;
-    playerSelection=new PlayerSelection;
-    playerSelection->show();
-    this->hide();
+    userprofile=new userProfile;
+    userprofile->show();
+    this->close();
 }
-
 

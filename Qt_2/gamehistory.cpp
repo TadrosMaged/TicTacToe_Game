@@ -1,6 +1,7 @@
 #include "gamehistory.h"
 #include "choosedifficulty.h"
 #include "gameplaywindow.h"
+#include "loginpage.h"
 #include "mainwindow.h"
 #include "playerselection.h"
 #include "qlabel.h"
@@ -30,7 +31,7 @@ void gameHistory::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/Game History.png");
+    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window
@@ -113,6 +114,7 @@ void gameHistory::on_pushButton_clicked()
 
 void gameHistory::on_pushButton_2_clicked()
 {
+    first = 0;
     mainWindow=new MainWindow;
     mainWindow->show();
     this->hide();
