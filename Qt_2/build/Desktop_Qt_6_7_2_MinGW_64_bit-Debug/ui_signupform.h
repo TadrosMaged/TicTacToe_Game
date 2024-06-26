@@ -39,13 +39,13 @@ public:
 "border:none"));
         passwordEdit = new QLineEdit(SignupForm);
         passwordEdit->setObjectName("passwordEdit");
-        passwordEdit->setGeometry(QRect(482, 350, 231, 26));
+        passwordEdit->setGeometry(QRect(482, 350, 231, 41));
         passwordEdit->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
 "color: rgb(0, 0, 0);\n"
 "border:none"));
         confirmEdit = new QLineEdit(SignupForm);
         confirmEdit->setObjectName("confirmEdit");
-        confirmEdit->setGeometry(QRect(480, 410, 221, 26));
+        confirmEdit->setGeometry(QRect(480, 410, 221, 41));
         confirmEdit->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0);\n"
 "color: rgb(0, 0, 0);\n"
 "border:none"));

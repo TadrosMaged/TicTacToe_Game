@@ -8,6 +8,8 @@ release/main.o
 release/mainwindow.o
 release/playerselection.o
 release/signupform.o
+release/statisticswindow.o
+release/userprofile.o
 release/moc_choosedifficulty.o
 release/moc_gamehistory.o
 release/moc_gamemodewindow.o
@@ -16,3 +18,5 @@ release/moc_loginpage.o
 release/moc_mainwindow.o
 release/moc_playerselection.o
 release/moc_signupform.o
+release/moc_statisticswindow.o
+release/moc_userprofile.o

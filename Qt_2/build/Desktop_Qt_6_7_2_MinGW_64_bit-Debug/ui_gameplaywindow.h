@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -23,12 +24,14 @@ public:
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QPushButton *pushButton_4;
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QWidget *GameplayWindow)
     {
         if (GameplayWindow->objectName().isEmpty())
             GameplayWindow->setObjectName("GameplayWindow");
-        GameplayWindow->resize(767, 682);
+        GameplayWindow->resize(831, 682);
         GameplayWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         pushButton = new QPushButton(GameplayWindow);
         pushButton->setObjectName("pushButton");
@@ -54,6 +57,19 @@ public:
         pushButton_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "background-color: rgba(255, 255, 255,0);\n"
 "border:none"));
+        label = new QLabel(GameplayWindow);
+        label->setObjectName("label");
+        label->setGeometry(QRect(520, 180, 281, 20));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Gilroy-Bold")});
+        font.setPointSize(12);
+        label->setFont(font);
+        label->setAlignment(Qt::AlignCenter);
+        label_2 = new QLabel(GameplayWindow);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(520, 199, 281, 31));
+        label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
 
         retranslateUi(GameplayWindow);
 
@@ -67,6 +83,8 @@ public:
         pushButton_2->setText(QString());
         pushButton_3->setText(QString());
         pushButton_4->setText(QString());
+        label->setText(QCoreApplication::translate("GameplayWindow", "TextLabel", nullptr));
+        label_2->setText(QCoreApplication::translate("GameplayWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

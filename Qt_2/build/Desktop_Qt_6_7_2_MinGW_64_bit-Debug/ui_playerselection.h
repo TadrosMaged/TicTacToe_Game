@@ -36,7 +36,7 @@ public:
     {
         if (PlayerSelection->objectName().isEmpty())
             PlayerSelection->setObjectName("PlayerSelection");
-        PlayerSelection->resize(715, 691);
+        PlayerSelection->resize(778, 691);
         PlayerSelection->setLayoutDirection(Qt::RightToLeft);
         pushButton = new QPushButton(PlayerSelection);
         pushButton->setObjectName("pushButton");
@@ -58,10 +58,16 @@ public:
 "border:none"));
         label_4 = new QLabel(PlayerSelection);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(100, 360, 601, 20));
+        label_4->setGeometry(QRect(90, 349, 611, 31));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Gilroy-Bold")});
+        font.setPointSize(14);
+        font.setBold(false);
+        label_4->setFont(font);
         label_3 = new QLabel(PlayerSelection);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(90, 150, 591, 47));
+        label_3->setGeometry(QRect(90, 146, 611, 51));
+        label_3->setFont(font);
         label_3->setLayoutDirection(Qt::LeftToRight);
         pushButton_3 = new QPushButton(PlayerSelection);
         pushButton_3->setObjectName("pushButton_3");

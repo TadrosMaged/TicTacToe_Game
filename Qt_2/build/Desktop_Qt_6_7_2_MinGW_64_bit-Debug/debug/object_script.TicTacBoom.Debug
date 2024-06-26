@@ -8,6 +8,8 @@ debug/main.o
 debug/mainwindow.o
 debug/playerselection.o
 debug/signupform.o
+debug/statisticswindow.o
+debug/userprofile.o
 debug/moc_choosedifficulty.o
 debug/moc_gamehistory.o
 debug/moc_gamemodewindow.o
@@ -16,3 +18,5 @@ debug/moc_loginpage.o
 debug/moc_mainwindow.o
 debug/moc_playerselection.o
 debug/moc_signupform.o
+debug/moc_statisticswindow.o
+debug/moc_userprofile.o
