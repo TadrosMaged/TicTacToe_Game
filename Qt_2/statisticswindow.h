@@ -2,6 +2,8 @@
 #define STATISTICSWINDOW_H
 
 #include <QWidget>
+#include<QSqlQuery>
+#include<QSqlError>
 class userProfile;
 namespace Ui {
 class statisticsWindow;
@@ -15,6 +17,7 @@ public:
     explicit statisticsWindow(QWidget *parent = nullptr);
     ~statisticsWindow();
     void Initialize();
+    void statisticsWindowShow();
 
 private slots:
     void on_pushButton_clicked();

@@ -44,7 +44,7 @@ void on_pushButton_3_clicked();
 void ClearBoard();
 void setHistory();
 void storeGameHistory(const QString& username, const QString& gameData,const QString& replayData);
-
+void setStats();
 private:
     Ui::GameplayWindow *ui;
     TicTacToe game;

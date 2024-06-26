@@ -18,7 +18,7 @@ MainWindow::~MainWindow()
 void MainWindow::Initialize()
 {
     setGeometry(0,0,1200,800);
-    setStyleSheet("QMainWindow { background-image: url(D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/00_Main_Menu.png); background-position: center; background-repeat: repeat; }");
+    setStyleSheet("QMainWindow { background-image: url(D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/00_Main_Menu.png); background-position: center; background-repeat: repeat; }");
 
 }
 void MainWindow:: setupStartAndExit()

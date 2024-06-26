@@ -24,7 +24,7 @@ void SignupForm::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/02_SignUP.png");
+    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/02_SignUP.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window

@@ -23,6 +23,7 @@ unsigned char replay[7][9] ={{10}};
 unsigned char replayindex[6]={0};
 unsigned char numberofplays[6]={0};
 unsigned char playindex = 0;
+unsigned char trig=-1;
 QPushButton *buttons[3][3];
 QString buttons_history1[6][3][3];
 QString gameData;
@@ -98,11 +99,11 @@ void GameplayWindow::Initialize()
     // Set the background image using QPixmap
     if (GameMode == MULTIPLAYER_MODE)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/06_Multiplayer_Board.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }else
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/04_Single_Player(2).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     }
     // Ensure the label resizes with the window
@@ -164,10 +165,16 @@ void GameplayWindow::onButtonClick(int row, int col)
         // Handle win condition
         if(currentPlayer == Player1)
         {
+            trig=0;
+            setStats();
          winnerMessage =  QString(username1) + " wins!";
+
         }else
         {
+            trig=1;
+            setStats();
          winnerMessage =  QString(username) + " wins!";
+
         }
         QMessageBox::information(this,"Success",winnerMessage);
         setHistory();
@@ -175,6 +182,8 @@ void GameplayWindow::onButtonClick(int row, int col)
     else if(game.isBoardFull(game.board))
     {
         // Handle draw condition
+        trig=2;
+        setStats();
          QMessageBox::information(this,"Success"," It's a draw ");
        setHistory();
         // Additional logic for end of game
@@ -206,6 +215,8 @@ void GameplayWindow::onButtonClick(int row, int col)
             // Handle win condition
             QString winnerMessage = "Computer wins!";
             QMessageBox::information(this,"Success",winnerMessage);
+            trig=0;
+            setStats();
             setHistory();
             qDebug(" Computer wins ");
             GameState = GAME_ENDED;
@@ -215,6 +226,8 @@ void GameplayWindow::onButtonClick(int row, int col)
         {
             // Handle draw condition
             QMessageBox::information(this,"Success"," It's a draw ");
+            trig=2;
+            setStats();
            setHistory();
             // Additional logic for end of game
         }
@@ -252,6 +265,148 @@ void GameplayWindow::onButtonClick(int row, int col)
 GameplayWindow::~GameplayWindow()
 {
     delete ui;
+}
+void GameplayWindow::setStats()
+{
+    QSqlQuery query;
+
+    if (trig == 0) // Player lost
+    {
+        int temp_losses = 0;
+        query.prepare("SELECT losses FROM game_history WHERE username = :username;");
+        query.bindValue(":username", username);
+        if (!query.exec()) {
+            qDebug() << "Error: failed to execute query - " << query.lastError();
+            return;
+        }
+        if (query.next())
+            temp_losses = query.value(0).toInt();
+        temp_losses++;
+        query.prepare("UPDATE game_history SET losses = :losses WHERE username = :username");
+        query.bindValue(":losses", temp_losses);
+        query.bindValue(":username", username);
+
+        if (!query.exec()) {
+            qDebug() << "Error updating record:" << query.lastError();
+        } else {
+            qDebug() << "Record updated successfully";
+        }
+
+        if (GameMode == MULTIPLAYER_MODE)
+        {
+            int temp_wins = 0;
+            query.prepare("SELECT wins FROM game_history WHERE username = :username1;");
+            query.bindValue(":username1", username1);
+            if (!query.exec()) {
+                qDebug() << "Error: failed to execute query - " << query.lastError();
+                return;
+            }
+            if (query.next())
+                temp_wins = query.value(0).toInt();
+            temp_wins++;
+            query.prepare("UPDATE game_history SET wins = :wins WHERE username = :username1");
+            query.bindValue(":wins", temp_wins);
+            query.bindValue(":username1", username1);
+
+            if (!query.exec()) {
+                qDebug() << "Error updating record:" << query.lastError();
+            } else {
+                qDebug() << "Record updated successfully";
+            }
+        }
+    }
+    else if (trig == 1) // Player won
+    {
+        int temp_wins = 0;
+        query.prepare("SELECT wins FROM game_history WHERE username = :username;");
+        query.bindValue(":username", username);
+        if (!query.exec()) {
+            qDebug() << "Error: failed to execute query - " << query.lastError();
+            return;
+        }
+        if (query.next())
+            temp_wins = query.value(0).toInt();
+        temp_wins++;
+        query.prepare("UPDATE game_history SET wins = :wins WHERE username = :username");
+        query.bindValue(":wins", temp_wins);
+        query.bindValue(":username", username);
+
+        if (!query.exec()) {
+            qDebug() << "Error updating record:" << query.lastError();
+        } else {
+            qDebug() << "Record updated successfully";
+        }
+
+        if (GameMode == MULTIPLAYER_MODE)
+        {
+            int temp_losses = 0;
+            query.prepare("SELECT losses FROM game_history WHERE username = :username1;");
+            query.bindValue(":username1", username1);
+            if (!query.exec()) {
+                qDebug() << "Error: failed to execute query - " << query.lastError();
+                return;
+            }
+            if (query.next())
+                temp_losses = query.value(0).toInt();
+            temp_losses++;
+            query.prepare("UPDATE game_history SET losses = :losses WHERE username = :username1");
+            query.bindValue(":losses", temp_losses);
+            query.bindValue(":username1", username1);
+
+            if (!query.exec()) {
+                qDebug() << "Error updating record:" << query.lastError();
+            } else {
+                qDebug() << "Record updated successfully";
+            }
+        }
+    }
+    else if (trig == 2) // Tie
+    {
+        int temp_ties = 0;
+        query.prepare("SELECT ties FROM game_history WHERE username = :username;");
+        query.bindValue(":username", username);
+        if (!query.exec()) {
+            qDebug() << "Error: failed to execute query - " << query.lastError();
+            return;
+        }
+        if (query.next())
+            temp_ties = query.value(0).toInt();
+        temp_ties++;
+        query.prepare("UPDATE game_history SET ties = :ties WHERE username = :username");
+        query.bindValue(":ties", temp_ties);
+        query.bindValue(":username", username);
+
+        if (!query.exec()) {
+            qDebug() << "Error updating record:" << query.lastError();
+        } else {
+            qDebug() << "Record updated successfully";
+        }
+
+        if (GameMode == MULTIPLAYER_MODE)
+        {
+            int temp_ties2 = 0;
+            query.prepare("SELECT ties FROM game_history WHERE username = :username1;");
+            query.bindValue(":username1", username1);
+            if (!query.exec()) {
+                qDebug() << "Error: failed to execute query - " << query.lastError();
+                return;
+            }
+            if (query.next())
+                temp_ties2 = query.value(0).toInt();
+            temp_ties2++;
+            query.prepare("UPDATE game_history SET ties = :ties WHERE username = :username1");
+            query.bindValue(":ties", temp_ties2);
+            query.bindValue(":username1", username1);
+
+            if (!query.exec()) {
+                qDebug() << "Error updating record:" << query.lastError();
+            } else {
+                qDebug() << "Record updated successfully";
+            }
+        }
+    }
+
+    trig = -1; // Reset trig after updating statistics
 }
 
 void GameplayWindow::on_pushButton_clicked()
