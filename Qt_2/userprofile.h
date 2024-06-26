@@ -35,7 +35,7 @@ private:
     MainWindow *mainWindow;
     gameHistory *gamehistory;
     PlayerSelection *playerSelection;
-     statisticsWindow *statisticswindow;
+    statisticsWindow *statisticswindow;
 };
 
 extern QString password,password1;

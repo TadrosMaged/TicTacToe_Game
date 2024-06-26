@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
+    <width>860</width>
     <height>508</height>
    </rect>
   </property>
@@ -32,62 +32,20 @@ border:none
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>290</y>
-     <width>63</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border:none</string>
-   </property>
-   <property name="text">
-    <string>Wins</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>290</y>
-     <width>63</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border:none</string>
-   </property>
-   <property name="text">
-    <string>Losses</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>290</y>
-     <width>63</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border:none</string>
-   </property>
-   <property name="text">
-    <string>Ties</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="wins">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>320</y>
+     <x>220</x>
+     <y>450</y>
      <width>63</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gilroy-Bold</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -96,11 +54,17 @@ border:none
   <widget class="QLabel" name="losses">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>320</y>
+     <x>390</x>
+     <y>400</y>
      <width>63</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gilroy-Bold</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -109,11 +73,17 @@ border:none
   <widget class="QLabel" name="ties">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>310</y>
+     <x>570</x>
+     <y>450</y>
      <width>63</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gilroy-Bold</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>

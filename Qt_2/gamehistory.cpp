@@ -7,8 +7,11 @@
 #include "qlabel.h"
 #include "qmessagebox.h"
 #include "ui_gamehistory.h"
+#include "userprofile.h"
 #include<QSqlQuery>
 #include<QSqlError>
+unsigned char Historyback = 0;
+unsigned char Historyplayer = 0;
 gameHistory::gameHistory(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::gameHistory)
@@ -22,7 +25,6 @@ gameHistory::~gameHistory()
 {
     delete ui;
 }
-
 void gameHistory::Initialize()
 {
     setGeometry(100, 100, 800, 600);
@@ -32,10 +34,241 @@ void gameHistory::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/Game History.png");
+    if(GameMode == MULTIPLAYER_MODE && Historyback == 1)
+    {
+    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History - MP.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
+    ui->pushButton->hide();
+    ui->pushButton_2->hide();
+    ui->pushButton_16->show();
+    ui->pushButton_17->show();
+    ui->pushButton_18->show();
+    ui->pushButton_19->show();
 
-    // Ensure the label resizes with the window
+    }
+    else if(GameMode == SINGLEPLAYER_MODE && Historyback == 1)
+    {
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History (1).png");
+        backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_16->hide();
+        ui->pushButton_17->hide();
+        ui->pushButton_18->hide();
+        ui->pushButton_19->hide();
+    }
+    else if( Historyback == 0)
+    {
+        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History (1).png");
+        backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_16->hide();
+        ui->pushButton_17->hide();
+        ui->pushButton_18->hide();
+        ui->pushButton_19->hide();
+    }
+    if (Historyplayer == 1)
+    {
+        if(Player2State[1] == 1)
+        {
+        ui->label->setText( " WIN ");
+        }
+        else if(Player2State[1] == 3)
+        {
+           ui->label->setText( " LOSE ");
+        }
+        else if(Player2State[1] == 2)
+        {
+           ui->label->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label->setText( "  ");
+        }
+        if(Player2State[2] == 1)
+        {
+            ui->label_2->setText( " WIN ");
+        }
+        else if(Player2State[2] == 3)
+        {
+            ui->label_2->setText( " LOSE ");
+        }
+        else if(Player2State[2] == 2)
+        {
+            ui->label_2->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_2->setText( "  ");
+        }
+        if(Player2State[3] == 1)
+        {
+            ui->label_3->setText( " WIN ");
+        }
+        else if(Player2State[3] == 3)
+        {
+            ui->label_3->setText( " LOSE ");
+        }
+        else if(Player2State[3] == 2)
+        {
+            ui->label_3->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_2->setText( "  ");
+        }
+        if(Player2State[4] == 1)
+        {
+            ui->label_4->setText( " WIN ");
+        }
+        else if(Player2State[4] == 3)
+        {
+            ui->label_4->setText( " LOSE ");
+        }
+        else if(Player2State[4] == 2)
+        {
+            ui->label_4->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_4->setText( "  ");
+        }
+        if(Player2State[5] == 1)
+        {
+            ui->label_5->setText( " WIN ");
+        }
+        else if(Player2State[5] == 3)
+        {
+            ui->label_5->setText( " LOSE ");
+        }
+        else if(Player2State[5] == 2)
+        {
+            ui->label_5->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_5->setText( "  ");
+        }
+        if(Player2State[6] == 1)
+        {
+            ui->label_6->setText( " WIN ");
+        }
+        else if(Player2State[6] == 3)
+        {
+            ui->label_6->setText( " LOSE ");
+        }
+        else if(Player2State[6] == 2)
+        {
+            ui->label_6->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_6->setText( "  ");
+        }
+
+
+    }
+    else
+    {
+        if(Player1State[1] == 1)
+        {
+            ui->label->setText( " WIN ");
+        }
+        else if(Player1State[1] == 3)
+        {
+            ui->label->setText( " LOSE ");
+        }
+        else if(Player1State[1] == 2)
+        {
+            ui->label->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label->setText( "  ");
+        }
+        if(Player1State[2] == 1)
+        {
+            ui->label_2->setText( " WIN ");
+        }
+        else if(Player1State[2] == 3)
+        {
+            ui->label_2->setText( " LOSE ");
+        }
+        else if(Player1State[2] == 2)
+        {
+            ui->label_2->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_2->setText( "  ");
+        }
+        if(Player1State[3] == 1)
+        {
+            ui->label_3->setText( " WIN ");
+        }
+        else if(Player1State[3] == 3)
+        {
+            ui->label_3->setText( " LOSE ");
+        }
+        else if(Player1State[3] == 2)
+        {
+            ui->label_3->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_2->setText( "  ");
+        }
+        if(Player1State[4] == 1)
+        {
+            ui->label_4->setText( " WIN ");
+        }
+        else if(Player1State[4] == 3)
+        {
+            ui->label_4->setText( " LOSE ");
+        }
+        else if(Player1State[4] == 2)
+        {
+            ui->label_4->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_4->setText( "  ");
+        }
+        if(Player1State[5] == 1)
+        {
+            ui->label_5->setText( " WIN ");
+        }
+        else if(Player1State[5] == 3)
+        {
+            ui->label_5->setText( " LOSE ");
+        }
+        else if(Player1State[5] == 2)
+        {
+            ui->label_5->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_5->setText( "  ");
+        }
+        if(Player1State[6] == 1)
+        {
+            ui->label_6->setText( " WIN ");
+        }
+        else if(Player1State[6] == 3)
+        {
+            ui->label_6->setText( " LOSE ");
+        }
+        else if(Player1State[6] == 2)
+        {
+            ui->label_6->setText( " DRAW ");
+        }
+        else
+        {
+            ui->label_6->setText( "  ");
+        }
+    }
+        // Ensure the label resizes with the window
     backgroundLabel->setScaledContents(true);
 
     // Make the label transparent so other widgets (if any) can be shown on top
@@ -49,9 +282,14 @@ void gameHistory::fetchGameHistory()
 {
     QSqlQuery query;
     query.prepare("SELECT game_data FROM game_history WHERE username = :username order by id desc Limit 6;");
-
+    //if(GameMode == MULTIPLAYER_MODE && Historyback == 1)
+    //{
+    //query.bindValue(":username", username1);
+    //}
+   // else
+    //{
     query.bindValue(":username", username);
-
+    //}
     if (!query.exec()) {
         qDebug() << "Error: failed to execute query - " << query.lastError();
         return;
@@ -263,5 +501,69 @@ void gameHistory::on_pushButton_12_clicked()
     buttons_history2[5][row][col]->setText(buttons_history1[5][row][col]);
     replayindex[5]++;
 
+}
+
+
+void gameHistory::on_pushButton_15_clicked()
+{
+    if(Historyback == 1)
+    {
+        gameplayWindow = new GameplayWindow;
+        gameplayWindow ->show();
+        this->close();
+    }
+    else if(Historyback == 0)
+    {
+        userprofile=new userProfile;
+        userprofile->show();
+        this->hide();
+    }
+}
+
+
+void gameHistory::on_pushButton_19_clicked()
+{
+    first = 0;
+    mainWindow=new MainWindow;
+    mainWindow->show();
+    this->hide();
+}
+
+
+void gameHistory::on_pushButton_17_clicked()
+{
+    if(GameMode==SINGLEPLAYER_MODE)
+    {
+        choosedifficulty=new chooseDifficulty;
+        choosedifficulty->show();
+    }
+    else
+    {
+        playerSelection=new PlayerSelection;
+        playerSelection->show();
+    }
+    this->hide();
+}
+
+
+void gameHistory::on_pushButton_18_clicked()
+{
+    if (Historyplayer == 0)
+        return;
+    Historyplayer=0;
+    gamehistory=new gameHistory;
+    gamehistory->show();
+    this->close();
+}
+
+
+void gameHistory::on_pushButton_16_clicked()
+{
+    if (Historyplayer == 1)
+        return;
+    Historyplayer=1;
+    gamehistory=new gameHistory;
+    gamehistory->show();
+    this->close();
 }
 

@@ -7,7 +7,6 @@
 #include "ui_loginpage.h"
 #include "userprofile.h"
 
-int count_signIns=0;
 QString username,password,username1,password1;
 unsigned char first =0;
 
@@ -18,7 +17,7 @@ LoginPage::LoginPage(QWidget *parent)
     ui->setupUi(this);
     Initialize();
     mydb=QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/TicTacBoom.db");
+    mydb.setDatabaseName("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/TicTacBoom.db");
     mydb.open();
 }
 
@@ -42,7 +41,7 @@ void LoginPage::Initialize()
     backgroundLabel->setGeometry(0, 0, 800, 600); // Adjust dimensions as needed
 
     // Set the background image using QPixmap
-    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/TicTacToe_Game/Qt_2/01_Login.png");
+    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/01_Login.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
 
     // Ensure the label resizes with the window
@@ -70,7 +69,7 @@ void LoginPage::on_pushButton_clicked()
         if(count==1)
         {
             QMessageBox::information(this, "Success", "SignIn successful,Hello "+username);
-          this->close();
+
             if(first==1)
             {
                 first = 2;
@@ -84,10 +83,10 @@ void LoginPage::on_pushButton_clicked()
             userprofile=new userProfile;
             userprofile->show();
 
-
         }
         if(count<1)
             QMessageBox::critical(this, "Error", "username or password is incorrect.");
     }
+    this->close();
 }
 
