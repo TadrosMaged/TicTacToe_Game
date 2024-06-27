@@ -33,19 +33,19 @@ public:
     ~GameplayWindow();
 
 private slots:
-void onButtonClick(int row, int col);
-void Initialize();
-void on_pushButton_clicked();
-void on_pushButton_2_clicked();
+    void onButtonClick(int row, int col);
+    void Initialize();
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 
-void on_pushButton_4_clicked();
-void on_pushButton_3_clicked();
+    void on_pushButton_4_clicked();
+    void on_pushButton_3_clicked();
 
-void ClearBoard();
-void setHistory();
-void storeGameHistory(const QString& username, const QString& gameData,const QString& replayData);
-void setStats();
-void on_pushButton_5_clicked();
+    void ClearBoard();
+    void setHistory();
+    void storeGameHistory(const QString& username1, const QString& gameData,const QString& replayData);
+    void setStats();
+    void on_pushButton_5_clicked();
 
 private:
     Ui::GameplayWindow *ui;

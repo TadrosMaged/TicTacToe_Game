@@ -32,14 +32,14 @@ void userProfile::Initialize()
     // Set the background image using QPixmap
     if(first == 1)
     {
-    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/1st_User_profile.png");
+    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/1st_User_profile.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     ui->label->setText(username1);
     ui->label_2->setText(password1);
     }
     else if(first == 2)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/2nd_User_profile.png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/2nd_User_profile.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
         ui->label->setText(username);
         ui->label_2->setText(password);

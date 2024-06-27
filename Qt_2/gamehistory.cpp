@@ -36,7 +36,7 @@ void gameHistory::Initialize()
     // Set the background image using QPixmap
     if(GameMode == MULTIPLAYER_MODE && Historyback == 1)
     {
-    QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History - MP.png");
+    QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/Game History - MP.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     ui->pushButton->hide();
     ui->pushButton_2->hide();
@@ -48,7 +48,7 @@ void gameHistory::Initialize()
     }
     else if(GameMode == SINGLEPLAYER_MODE && Historyback == 1)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History (1).png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/Game History (1).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
         ui->pushButton->show();
         ui->pushButton_2->show();
@@ -59,7 +59,7 @@ void gameHistory::Initialize()
     }
     else if( Historyback == 0)
     {
-        QPixmap backgroundImage("D:/Git - Files/Tic-Tac-Boom/TicTacToe_Game/Qt_2/Game History (1).png");
+        QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/Game History (1).png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
         ui->pushButton->show();
         ui->pushButton_2->show();
@@ -116,23 +116,23 @@ void gameHistory::Initialize()
         }
         else
         {
-            ui->label_2->setText( "  ");
+            ui->label_3->setText( "  ");
         }
         if(Player2State[4] == 1)
         {
-            ui->label_4->setText( " WIN ");
+            ui->label_6->setText( " WIN ");
         }
         else if(Player2State[4] == 3)
         {
-            ui->label_4->setText( " LOSE ");
+            ui->label_6->setText( " LOSE ");
         }
         else if(Player2State[4] == 2)
         {
-            ui->label_4->setText( " DRAW ");
+            ui->label_6->setText( " DRAW ");
         }
         else
         {
-            ui->label_4->setText( "  ");
+            ui->label_6->setText( "  ");
         }
         if(Player2State[5] == 1)
         {
@@ -152,19 +152,19 @@ void gameHistory::Initialize()
         }
         if(Player2State[6] == 1)
         {
-            ui->label_6->setText( " WIN ");
+            ui->label_4->setText( " WIN ");
         }
         else if(Player2State[6] == 3)
         {
-            ui->label_6->setText( " LOSE ");
+            ui->label_4->setText( " LOSE ");
         }
         else if(Player2State[6] == 2)
         {
-            ui->label_6->setText( " DRAW ");
+            ui->label_4->setText( " DRAW ");
         }
         else
         {
-            ui->label_6->setText( "  ");
+            ui->label_4->setText( "  ");
         }
 
 
@@ -217,23 +217,23 @@ void gameHistory::Initialize()
         }
         else
         {
-            ui->label_2->setText( "  ");
+            ui->label_3->setText( "  ");
         }
         if(Player1State[4] == 1)
         {
-            ui->label_4->setText( " WIN ");
+            ui->label_6->setText( " WIN ");
         }
         else if(Player1State[4] == 3)
         {
-            ui->label_4->setText( " LOSE ");
+            ui->label_6->setText( " LOSE ");
         }
         else if(Player1State[4] == 2)
         {
-            ui->label_4->setText( " DRAW ");
+            ui->label_6->setText( " DRAW ");
         }
         else
         {
-            ui->label_4->setText( "  ");
+            ui->label_6->setText( "  ");
         }
         if(Player1State[5] == 1)
         {
@@ -253,19 +253,19 @@ void gameHistory::Initialize()
         }
         if(Player1State[6] == 1)
         {
-            ui->label_6->setText( " WIN ");
+            ui->label_4->setText( " WIN ");
         }
         else if(Player1State[6] == 3)
         {
-            ui->label_6->setText( " LOSE ");
+            ui->label_4->setText( " LOSE ");
         }
         else if(Player1State[6] == 2)
         {
-            ui->label_6->setText( " DRAW ");
+            ui->label_4->setText( " DRAW ");
         }
         else
         {
-            ui->label_6->setText( "  ");
+            ui->label_4->setText( "  ");
         }
     }
         // Ensure the label resizes with the window
@@ -288,8 +288,26 @@ void gameHistory::fetchGameHistory()
     //}
    // else
     //{
+    if(GameMode==MULTIPLAYER_MODE&&Historyplayer==0&&Historyback==1)
+    {
+      query.bindValue(":username", username1);
+        qDebug()<<"I am USER 1";
+    }
+    else if(GameMode==MULTIPLAYER_MODE&&Historyplayer==1&&Historyback==1)
+    {
+      query.bindValue(":username", username);
+        qDebug()<<"I am USER 2";
+    }
+    else if(first==1)
+    {
+    query.bindValue(":username", username1);
+     qDebug()<<"I am USER 3";
+    }
+    else if(first==2)
+    {
     query.bindValue(":username", username);
-    //}
+    qDebug()<<"I am USER 4";
+    }
     if (!query.exec()) {
         qDebug() << "Error: failed to execute query - " << query.lastError();
         return;

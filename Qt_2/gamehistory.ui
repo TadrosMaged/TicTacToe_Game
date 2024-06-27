@@ -358,8 +358,8 @@ border:none</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>-20</x>
-     <y>90</y>
+     <x>60</x>
+     <y>130</y>
      <width>281</width>
      <height>20</height>
     </rect>
@@ -371,7 +371,7 @@ border:none</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
+    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(255, 255, 255,0);
 border:none</string>
    </property>
@@ -385,8 +385,8 @@ border:none</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>90</y>
+     <x>260</x>
+     <y>130</y>
      <width>281</width>
      <height>20</height>
     </rect>
@@ -398,7 +398,7 @@ border:none</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
+    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(255, 255, 255,0);
 border:none</string>
    </property>
@@ -412,8 +412,8 @@ border:none</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>90</y>
+     <x>460</x>
+     <y>130</y>
      <width>281</width>
      <height>20</height>
     </rect>
@@ -425,39 +425,12 @@ border:none</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
+    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(255, 255, 255,0);
 border:none</string>
    </property>
    <property name="text">
-    <string>TextLabel</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>530</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Gilroy-Bold</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
-background-color: rgba(255, 255, 255,0);
-border:none</string>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -466,8 +439,8 @@ border:none</string>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>530</y>
+     <x>250</x>
+     <y>540</y>
      <width>281</width>
      <height>20</height>
     </rect>
@@ -479,7 +452,34 @@ border:none</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255,0);
+border:none</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>540</y>
+     <width>281</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gilroy-Bold</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(255, 255, 255,0);
 border:none</string>
    </property>
@@ -493,8 +493,8 @@ border:none</string>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>530</y>
+     <x>50</x>
+     <y>540</y>
      <width>281</width>
      <height>20</height>
     </rect>
@@ -506,7 +506,7 @@ border:none</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(0, 0, 0);
+    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(255, 255, 255,0);
 border:none</string>
    </property>
