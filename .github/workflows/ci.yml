@@ -19,6 +19,7 @@ jobs:
 
       - name: Build and test 'tst_test1'
         run: |
-          qmake Qt_2/test/test.pro
+          cd Qt_2/test
+          qmake test.pro
           make
           xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' ./tst_test1
