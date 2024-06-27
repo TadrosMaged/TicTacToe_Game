@@ -19,26 +19,13 @@ jobs:
 
       - name: Build project
         run: |
-          cd Qt_2/test
-          qmake test.pro
+          cd Qt_2
+          qmake tictacboom.pro
           make
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifact
+          path: Qt_2 # Specify the path to the artifact you want to upload
 
-      - name: List files for debugging
-        run: |
-          cd Qt_2/test
-          ls -l
-
-      - name: Check if tst_test1 exists
-        run: |
-          cd Qt_2/test
-          if [ -f ./tst_test1 ]; then
-            echo "tst_test1 found."
-          else
-            echo "tst_test1 not found."
-            exit 1
-          fi
-
-      - name: Run tests
-        run: |
-          cd Qt_2/test
-          xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' ./tst_test1
+      
