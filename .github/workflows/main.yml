@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.15.2'
+        host: ubuntu
+        target: desktop
+        arch: gcc_64
+
+    - name: Install build dependencies
+      run: sudo apt-get install -y qt5-qmake qtbase5-dev qt5-default
+
+    - name: Build with qmake
+      run: |
+        qmake test.pro
+        make
+
+    - name: Run tests
+      run: |
+        ./tst_test1
