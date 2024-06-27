@@ -8,6 +8,7 @@
 #include<QMessageBox>
 #include<QPixmap>
 #include<QLabel>
+#include<QCryptographicHash>
 class SignupForm;
 class userProfile;
 class GameplayWindow;

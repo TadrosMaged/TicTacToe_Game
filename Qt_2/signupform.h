@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include <QCryptographicHash>
 #include"loginpage.h"
 class LoginPage;
 namespace Ui {

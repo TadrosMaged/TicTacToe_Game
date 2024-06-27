@@ -64,13 +64,13 @@ void SignupForm::on_signupButton_clicked()
         return;
     }
 
+    QByteArray hashedPassword = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
+
     // Insert new user into database
     QSqlQuery query;
-    query.prepare("INSERT INTO Players (username, password) "
-                  "VALUES (:username, :password)");
+    query.prepare("INSERT INTO Players (username, password) VALUES (:username, :password)");
     query.bindValue(":username", username);
-    query.bindValue(":password", password);
-
+    query.bindValue(":password", hashedPassword.toHex());
     if (!query.exec()) {
         qDebug() << "Error inserting data:" << query.lastError().text();
         QMessageBox::critical(this, "Error", "Failed to insert data into database.");

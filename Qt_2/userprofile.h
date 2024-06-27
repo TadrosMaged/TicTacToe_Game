@@ -2,6 +2,7 @@
 #define USERPROFILE_H
 
 #include <QWidget>
+#include<QCryptographicHash>
 class gameHistory;
 class MainWindow;
 class GameModeWindow;

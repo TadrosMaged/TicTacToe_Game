@@ -58,8 +58,12 @@ void LoginPage::on_pushButton_clicked()
 {
     username=ui->lineEdit_user->text();
     password=ui->lineEdit_pass->text();
+    QByteArray hashedPassword = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
     QSqlQuery qry;
-    if(qry.exec("select * from Players where username='"+username +"'and password='"+password+"'"))
+    qry.prepare("SELECT * FROM Players WHERE username = :username AND password = :password");
+    qry.bindValue(":username", username);
+    qry.bindValue(":password", hashedPassword.toHex());
+    if(qry.exec())
     {
         int count=0;
         while(qry.next())

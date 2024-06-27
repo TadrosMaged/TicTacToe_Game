@@ -35,14 +35,16 @@ void userProfile::Initialize()
     QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/1st_User_profile.png");
     backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
     ui->label->setText(username1);
-    ui->label_2->setText(password1);
+    QByteArray hashedPassword = QCryptographicHash::hash(password1.toUtf8(), QCryptographicHash::Sha256);
+    ui->label_2->setText(hashedPassword);
     }
     else if(first == 2)
     {
         QPixmap backgroundImage("D:/TicTacBoom-git/TicTacToe_Game/Qt_2/2nd_User_profile.png");
         backgroundLabel->setPixmap(backgroundImage.scaled(backgroundLabel->size(), Qt::IgnoreAspectRatio));
         ui->label->setText(username);
-        ui->label_2->setText(password);
+        QByteArray hashedPassword = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
+        ui->label_2->setText(hashedPassword);
     }
 
     // Ensure the label resizes with the window
