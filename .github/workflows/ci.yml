@@ -20,7 +20,7 @@ jobs:
       - name: Build project
         run: |
           cd Qt_2
-          qmake tictacboom.pro
+          qmake TicTacBoom.pro
           make
       - name: Upload build artifact
         uses: actions/upload-artifact@v2
