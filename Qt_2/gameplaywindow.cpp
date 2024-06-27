@@ -456,8 +456,8 @@ void GameplayWindow::setHistory()
        storeGameHistory(username1, gameData,replayData);
        if(GameMode==MULTIPLAYER_MODE)
         storeGameHistory(username, gameData,replayData);
-       //gameData=0;
-       //replayData=0;
+       gameData=0;
+       replayData=0;
 }
 
 void GameplayWindow::ClearBoard()
