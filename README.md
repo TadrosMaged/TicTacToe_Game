@@ -1,4 +1,3 @@
-# TicTacToe_Game
 # TicTacToe by TicTacBoom
 
 Welcome to the TicTacToe game developed by team TicTacBoom! This project is implemented using Qt 6.7.0 and designed to be run on Windows 11.
