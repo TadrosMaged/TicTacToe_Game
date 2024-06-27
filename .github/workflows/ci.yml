@@ -17,9 +17,28 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y qtbase5-dev qt5-qmake xvfb
 
-      - name: Build and test 'tst_test1'
+      - name: Build project
         run: |
           cd Qt_2/test
           qmake test.pro
           make
+
+      - name: List files for debugging
+        run: |
+          cd Qt_2/test
+          ls -l
+
+      - name: Check if tst_test1 exists
+        run: |
+          cd Qt_2/test
+          if [ -f ./tst_test1 ]; then
+            echo "tst_test1 found."
+          else
+            echo "tst_test1 not found."
+            exit 1
+          fi
+
+      - name: Run tests
+        run: |
+          cd Qt_2/test
           xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' ./tst_test1
